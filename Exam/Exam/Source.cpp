@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 int Person::idCounter = 0;
 
 void main()

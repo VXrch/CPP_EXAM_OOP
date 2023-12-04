@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -114,10 +115,90 @@ protected:
 	}
 };
 
+enum Language { English, Ukrainian, Italian, Spanish, French, German };
+
+enum Genres { Fantasy, ScienceFiction, Dystopian, Action, Mystery, Horror, Thriller, HistoricalFiction, Romance, ContemporaryFiction, MagicalRealism, GraphicNovel, Memoir, Biography, Travel, TrueCrime, Humor };
+
 class Book
 {
+protected:
 
+	string title;
+	string author;
+	string discription;
+	int year;
+	float price;
 
+	Language language;
+	vector<Genres> genres;
 
+	float* sale;
 
+	Book(string title, string author, string discription, int year, float price, Language language, vector<Genres> genres, float* sale) : title(title), author(author), discription(discription), year(year), price(price), language(language), genres(), sale(nullptr) {}
+
+	string GetGenreByNumber(int number) const;
+
+	void Print() const;
+
+	string GetTitle() const
+	{
+		return title;
+	}
+	string GetAuthor() const
+	{
+		return author;
+	}
+	int GetYear() const
+	{
+		return year;
+	}
+	float GetPrice() const
+	{
+		return price;
+	}
+	Language GetLanguage() const
+	{
+		return language;
+	}
+	vector<Genres> GetGenres() const
+	{
+		return genres;
+	}
+	float GetSale() const
+	{
+		if (sale == nullptr)
+		{
+			return 0;
+		}
+		return *sale;
+	}
+
+	void SetTitle(string title)
+	{
+		this->title = title;
+	}
+	void SetAuthor(string author)
+	{
+		this->author = author;
+	}
+	void SetYear(int year)
+	{
+		this->year = year;
+	}
+	void SetPrice(float price)
+	{
+		this->price = price;
+	}
+	void SetLanguage(Language language)
+	{
+		this->language = language;
+	}
+	void SetGenres(Genres genre)
+	{
+		this->genres.push_back(genre);
+	}
+	void SetSale(float *sale)
+	{
+		this->sale = sale;
+	}
 };
