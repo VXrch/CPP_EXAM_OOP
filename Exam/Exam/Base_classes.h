@@ -4,16 +4,16 @@
 
 using namespace std;
 
-enum Status { Active, Blocked };
-
 class Person
 {
 protected:
 
+	enum Status { Active, Blocked };
+
 	string name;
 	string surname;
-	int age;
 	string phone;
+	int age;
 
 	// to block account
 	Status account_status;
@@ -115,17 +115,17 @@ protected:
 	}
 };
 
-enum Language { English, Ukrainian, Italian, Spanish, French, German };
-
-enum Genres { Fantasy, ScienceFiction, Dystopian, Action, Mystery, Horror, Thriller, HistoricalFiction, Romance, ContemporaryFiction, MagicalRealism, GraphicNovel, Memoir, Biography, Travel, TrueCrime, Humor };
-
 class Book
 {
 protected:
 
+	enum Language { English, Ukrainian, Italian, Spanish, French, German };
+	enum Genres { Fantasy, ScienceFiction, Dystopian, Action, Mystery, Horror, Thriller, HistoricalFiction, Romance, ContemporaryFiction, MagicalRealism, GraphicNovel, Memoir, Biography, Travel, TrueCrime, Humor };
+	
 	string title;
 	string author;
 	string discription;
+	int ageRating;
 	int year;
 	float price;
 
@@ -134,7 +134,7 @@ protected:
 
 	float* sale;
 
-	Book(string title, string author, string discription, int year, float price, Language language, vector<Genres> genres, float* sale) : title(title), author(author), discription(discription), year(year), price(price), language(language), genres(), sale(nullptr) {}
+	Book(string title, string author, string discription, int year, int ageRating, float price, Language language, vector<Genres> genres, float* sale) : title(title), author(author), discription(discription), year(year), ageRating(ageRating), price(price), language(language), genres(), sale(nullptr) {}
 
 	string GetGenreByNumber(int number) const;
 
