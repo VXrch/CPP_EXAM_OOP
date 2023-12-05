@@ -1,6 +1,7 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -29,9 +30,10 @@ protected:
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	Person(string name, string surname, int age, string phone, Status account_status, string nickname, string password) : name(name), surname(surname), age(age), phone(phone), account_status(account_status), nickname(nickname), password(password)
+	Person(string name, string surname, int age, string phone, string nickname, string password) : name(name), surname(surname), age(age), phone(phone), account_status(Active), nickname(nickname), password(password)
 	{
-		id = idCounter++;
+		idCounter++;
+		id = idCounter;
 	}
 
 	virtual void Print() const; // basic info
@@ -121,7 +123,17 @@ protected:
 
 	enum Language { English, Ukrainian, Italian, Spanish, French, German };
 	enum Genres { Fantasy, ScienceFiction, Dystopian, Action, Mystery, Horror, Thriller, HistoricalFiction, Romance, ContemporaryFiction, MagicalRealism, GraphicNovel, Memoir, Biography, Travel, TrueCrime, Humor };
-	
+
+	struct Type
+	{
+		string type;
+
+		void SetType(int year, string language, int ageRating)
+		{
+			type = to_string(year), language.at(0), ageRating;
+		}
+	};
+
 	string title;
 	string author;
 	string discription;
@@ -129,14 +141,24 @@ protected:
 	int year;
 	float price;
 
+	static int idCounter;
+	int id;
+
 	Language language;
 	vector<Genres> genres;
 
 	float* sale;
+	Type type;
 
-	Book(string title, string author, string discription, int year, int ageRating, float price, Language language, vector<Genres> genres, float* sale) : title(title), author(author), discription(discription), year(year), ageRating(ageRating), price(price), language(language), genres(), sale(nullptr) {}
+	Book(string title, string author, string discription, int year, int ageRating, float price, Language language, vector<Genres> genres, float* sale) : title(title), author(author), discription(discription), year(year), ageRating(ageRating), price(price), language(language), genres(), sale(nullptr) 
+	{
+		idCounter++;
+		id = idCounter;
+	}
 
-	string GetGenreByNumber(int number) const;
+	string GetGenre(int number) const;
+	string GetGenre(int i) const;
+	string GetLanguage() const;
 
 	void Print() const;
 
@@ -156,10 +178,6 @@ protected:
 	{
 		return price;
 	}
-	Language GetLanguage() const
-	{
-		return language;
-	}
 	vector<Genres> GetGenres() const
 	{
 		return genres;
@@ -171,6 +189,10 @@ protected:
 			return 0;
 		}
 		return *sale;
+	}
+	string GetType() const
+	{
+		return type.type;
 	}
 
 	void SetTitle(string title)
@@ -197,7 +219,7 @@ protected:
 	{
 		this->genres.push_back(genre);
 	}
-	void SetSale(float *sale)
+	void SetSale(float* sale)
 	{
 		this->sale = sale;
 	}
