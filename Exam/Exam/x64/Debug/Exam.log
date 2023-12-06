@@ -1,0 +1,6 @@
+﻿  Source.cpp
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Source.cpp(11,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  Users.cpp
+  Generating Code...
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Base_classes.h(789): warning C4715: 'User::Order::GetStatus': not all control paths return a value
+  Exam.vcxproj -> C:\Users\dev\Desktop\C++_Exam\Exam\x64\Debug\Exam.exe
