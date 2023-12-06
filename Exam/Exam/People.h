@@ -95,4 +95,5 @@ class Admin : public Person
 public:
 
 	void ChangeBookInfo(Book& book);
+	
 };

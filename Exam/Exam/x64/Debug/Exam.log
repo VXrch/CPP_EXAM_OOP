@@ -1,7 +1,8 @@
-﻿  People.cpp
+﻿  Book.cpp
+  People.cpp
   Person.cpp
   Source.cpp
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Source.cpp(20,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  Generating Code...
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\People.cpp(136): warning C4715: 'User::Order::GetStatus': not all control paths return a value
-  Exam.vcxproj -> C:\Users\dev\Desktop\C++_Exam\Exam\x64\Debug\Exam.exe
+C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Source.cpp(38,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+  Создание кода...
+C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\People.cpp(136): warning C4715: User::Order::GetStatus: значение возвращается не при всех путях выполнения
+  Exam.vcxproj -> C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\x64\Debug\Exam.exe

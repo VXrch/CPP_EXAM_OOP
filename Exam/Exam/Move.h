@@ -26,37 +26,36 @@ struct Move
 	}
 	string CatchMove()
 	{
-		int key = _getch();
+		bool ext = false;
+		while (ext == true)
+		{
+			int key = _getch();
 
-		if (key == 13) // Enter
-		{
-			return "enter";
-		}
-		else if (key == 87 || key == 119) // [W / w] [up]
-		{
-			return "up";
-		}
-		else if (key == 83 || key == 115) // [S / s] [down]
-		{
-
-		}
-		else if (key == 224)
-		{
-			key = _getch();
-
-			if (key == 72) // up
+			if (key == 13) // Enter
 			{
-
+				return "enter";
 			}
-			else if (key == 80) // down
+			else if (key == 87 || key == 119) // [W / w] [up]
 			{
+				return "up";
+			}
+			else if (key == 83 || key == 115) // [S / s] [down]
+			{
+				return "down";
+			}
+			else if (key == 224)
+			{
+				key = _getch();
 
+				if (key == 72) // up
+				{
+					return "up";
+				}
+				else if (key == 80) // down
+				{
+					return "down";
+				}
 			}
 		}
-	}
-
-	void operator++()
-	{
-		Y++;
 	}
 };

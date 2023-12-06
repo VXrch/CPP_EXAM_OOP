@@ -40,8 +40,8 @@ protected:
 	Book() : title(""), author(""), discription(""), ageRating(0), year(0), price(0), id(0), language(English), genres(), sale(nullptr), type(0) {}
 	Book(string title, string author, string discription, int year, int ageRating, float price, Language language, vector<Genres> genres, float* sale) : title(title), author(author), discription(discription), year(year), ageRating(ageRating), price(price), language(language), genres(), sale(nullptr)
 	{
-		idCounter++;
 		id = idCounter;
+		idCounter++;
 	}
 
 	void SetTitle(string title)
@@ -77,19 +77,80 @@ protected:
 		this->ageRating = ageRating;
 	}
 
+	inline void Successed() const
+	{
+		system("cls"); cout << "Successed!" << endl; system("pause");
+	}
+	inline void Fail() const
+	{
+		system("cls"); cout << "This genre is alredy entered!" << endl; system("pause");
+	}
+
+	bool IsUnique(Genres genre) const
+	{
+		for (int i = 0; i < genres.size(); i++)
+		{
+			if (genre == genres[i])
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
+	void Fill();
+
 	void ChangeLanguage()
 	{
-		system("cls");
-		PrintAllLanguages(1, 1);
+		Move move (2, 2);
+		bool ext = false;
 
+		while (!ext)
+		{
+			move.Gotoxy(2, 1); cout << "Choose new language: ";
+
+			PrintAllLanguages(move.X, move.Y);
+			move.Gotoxy(1, move.Y); cout << ">";
+			string user_move = move.CatchMove();
+
+			if (user_move == "enter")
+			{
+				ext = true;
+				switch (move.Y)
+				{
+				case 2: // English
+					language = English; break;
+				case 3:  // Ukrainian
+					language = Ukrainian; break;
+				case 4:  // Italian
+					language = Italian; break;
+				case 5:  // Spanish
+					language = Spanish; break;
+				case 6:  // French
+					language = French; break;
+				case 7:  // German
+					language = German; break;
+				}
+			}
+			else if (user_move == "up")
+			{
+				move.Y == 2 ? move.Y = 7 : move.Y++;
+			}
+			else if (user_move == "down")
+			{
+				move.Y == 7 ? move.Y = 2 : move.Y--;
+			}
+		}
 	}
 
 	friend class Admin;
 	friend struct Order;
+	friend class Library;
 
 public:
 
 	void Print() const;
+	void MinInfo() const;
 	void PrintShortInfo() const;
 	void PrintAllGenres() const;
 	void PrintAllLanguages() const;
