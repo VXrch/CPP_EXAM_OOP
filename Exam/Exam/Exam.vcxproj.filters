@@ -38,9 +38,6 @@
     <ClInclude Include="Book.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Library.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="People.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>

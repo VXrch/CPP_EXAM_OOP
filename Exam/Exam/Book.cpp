@@ -1,3 +1,4 @@
+#include "People.h"
 
 string Book::GetLanguage() const
 {

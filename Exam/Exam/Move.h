@@ -1,5 +1,13 @@
 #pragma once
+#include <iostream>
+#include <windows.h>
+#include <conio.h>
+#include <vector>
+#include <string>
+#include <list>
+#include <map>
 
+using namespace std;
 
 struct Move
 {

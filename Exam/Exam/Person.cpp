@@ -1,5 +1,4 @@
-#pragma once
-
+#include "People.h"
 
 void Person::Print() const // basic info
 {

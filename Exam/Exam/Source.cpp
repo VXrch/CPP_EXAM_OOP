@@ -1,11 +1,16 @@
 #pragma once
-#include <iostream>
-#include <windows.h>
-#include <conio.h>
-#include <vector>
-#include <string>
-#include <list>
-#include <map>
+#include "People.h"
+
+class Library
+{
+	struct Pair // How many the same books
+	{
+		Book book;
+		int counter;
+	};
+
+	list<Pair> books;
+};
 
 using namespace std;
 
