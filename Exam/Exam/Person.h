@@ -52,13 +52,7 @@ protected:
 	void Print() const; // basic info
 	virtual void PrintSecretInfo() const; // info to login
 
-	bool MakeNickname(vector<Person> all_users);
-	bool MakeUpPassword();
-
 	bool isContinue();
-
-	bool Register(vector<Person> all_users);
-	bool LogIn(vector<Person> all_users);
 
 	// Get
 	string GetName() const

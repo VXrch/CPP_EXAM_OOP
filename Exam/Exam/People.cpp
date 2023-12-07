@@ -1,5 +1,159 @@
 #include "People.h"
 
+
+bool User::MakeUpPassword()
+{
+	bool ext = false;
+	while (!ext)
+	{
+		cout << "To exit press [0]" << endl;
+		cout << "The password must contain at least 8 characters, numbers and letters." << endl;
+		cout << "your password: "; cin >> password;
+
+		if (password == "0")
+		{
+			return false;
+		}
+
+		if (password.length() < 8)
+		{
+
+		}
+	}
+}
+bool User::MakeNickname(vector<User> all_users)
+{
+	bool ext = false, go = false;
+	while (!ext)
+	{
+		cout << "To exit press [0]" << endl;
+		cout << "Make up a nickname:"; cin >> nickname;
+
+		if (nickname == "0")
+		{
+			system("cls");
+			return false;
+		}
+		else
+		{
+			for (int i = 0; i < all_users.size(); i++)
+			{
+				if (nickname == all_users[i].GetNickname())
+				{
+					cout << "This nickname already exists. Please enter another one!" << endl;
+					system("pause"); system("cls");
+					go = false;
+					break;
+				}
+			}
+			if (go == true)
+			{
+				system("cls");
+				return true;
+			}
+			go = true;
+		}
+	}
+}
+
+bool User::Register(vector<User> all_users)
+{
+	try
+	{
+		bool ext = false;
+
+		cout << "Fill out the form with information about yourself: " << endl;
+		cout << "Your name: "; getline(cin, name);
+		cout << "Your surname: "; getline(cin, surname);
+		cout << "Phone number: "; getline(cin, phone);
+
+		while (!ext)
+		{
+			system("cls");
+			cout << "your age (number): ";
+			if (!(cin >> age))
+			{
+				cin.clear(); // Clear errors
+				cin.ignore(10000, '\n'); // Crear buffer
+				cout << "Age must be a number! Incorrect argument!" << endl;
+			}
+			else
+			{
+				ext = true;
+			}
+		}
+		ext = false;
+
+		system("cls"); cout << "Ok!" << endl; system("pause"); system("cls");
+
+		while (!ext)
+		{
+			bool go = false;
+			go = MakeNickname(all_users);
+
+			if (go == false)
+			{
+				if (isContinue() == true)
+				{
+					system("cls");
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else
+			{
+				ext = true;
+			}
+		}
+		ext = false;
+
+		while (!ext)
+		{
+			bool go = false;
+			go = MakeUpPassword();
+
+			if (go == false)
+			{
+				if (!isContinue())
+				{
+					system("cls");
+					return false;
+				}
+			}
+			else
+			{
+				ext = true;
+			}
+		}
+
+		idCounter++;
+		id = idCounter;
+
+		return true;
+	}
+	catch (const exception& exception)
+	{
+		cout << exception.what() << endl;
+		return false;
+	}
+}
+bool User::LogIn(vector<User> users, string nickname, string password)
+{
+	for (int i = 0; i < users.size(); i++)
+	{
+		if (users[i].nickname == nickname)
+		{
+			if (users[i].password == password)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 void User::Print() const
 {
 	Person::Print();
@@ -410,4 +564,19 @@ void Admin::AddSaleToBook(Book& book)
 	{
 		cout << "Sale must be a number!" << endl;
 	}
+}
+
+bool Admin::LogIn(vector<Admin> admins, string nickname, string password)
+{
+	for (int i = 0; i < admins.size(); i++)
+	{
+		if (admins[i].nickname == nickname)
+		{
+			if (admins[i].password == password)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
 }

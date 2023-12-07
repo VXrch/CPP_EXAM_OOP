@@ -1,16 +1,5 @@
-﻿  FilesWork.cpp
+﻿  Source.cpp
 C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Book.h(182,21): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\FilesWork.cpp(33,21): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\FilesWork.cpp(45,20): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\FilesWork.cpp(241,23): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\FilesWork.cpp(263,28): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\FilesWork.cpp(275,27): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\FilesWork.cpp(312,22): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\FilesWork.cpp(324,21): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\FilesWork.cpp(361,23): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\FilesWork.cpp(373,22): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-  Source.cpp
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Book.h(182,21): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Source.cpp(11,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
-  Создание кода...
+C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Source.cpp(99,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Move.h(67): warning C4715: Move::CatchMove: значение возвращается не при всех путях выполнения
   Exam.vcxproj -> C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\x64\Debug\Exam.exe

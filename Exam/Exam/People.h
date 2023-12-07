@@ -98,10 +98,10 @@ class User : public Person
 	vector<Order> orders;
 	vector<Book> wishlist; // add id of concrete book and add book to preferences
 
+public:
+
 	User() : cart(), orders(), preferences(), wishlist(), Person() {}
 	User(string name, string surname, int age, string phone, string nickname, string password) : cart(), orders(), preferences(), wishlist(), Person(name, surname, age, phone, nickname, password) {}
-
-public:
 
 	void Print() const;
 
@@ -113,6 +113,12 @@ public:
 	{
 		return preferences.GetFavLanguage();
 	}
+
+	bool MakeUpPassword();
+	bool MakeNickname(vector<User> all_users);
+
+	bool Register(vector<User> all_users);
+	bool LogIn(vector<User> admins, string nickname, string password);
 
 	void PrintCart() const;
 	void PrintOrders() const;
@@ -140,5 +146,5 @@ public:
 	void ChangeBookInfo(Book& book);
 	void AddSaleToBook(Book& book);
 
-	friend class FilesWork;
+	bool LogIn(vector<Admin> admins, string nickname, string password);
 };
