@@ -33,6 +33,22 @@ protected:
 		id = idCounter;
 	}
 
+	void MakeStatus(string status)
+	{
+		if (status == "Active")
+		{
+			this->account_status = Active;
+		}
+		else if (status == "Blocked")
+		{
+			this->account_status = Blocked;
+		}
+		else
+		{
+			this->account_status = None;
+		}
+	}
+
 	void Print() const; // basic info
 	virtual void PrintSecretInfo() const; // info to login
 

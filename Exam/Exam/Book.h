@@ -14,6 +14,7 @@ protected:
 
 		Type() : type("") {}
 		Type(int number) : type("0") {}
+		Type(string type) : type(type) {}
 
 		void SetType(int year, string language, int ageRating)
 		{
@@ -48,31 +49,35 @@ private:
 		system("cls"); cout << "This genre is alredy entered!" << endl; system("pause");
 	}
 
-	Language MakeLanguage(string language)
+	void MakeLanguage(string language)
 	{
 		if (language == "English")
 		{
-			return English;
+			this->language = English;
 		}
 		else if (language == "Ukrainian")
 		{
-			return Ukrainian;
+			this->language = Ukrainian;
 		}
 		else if (language == "Italian")
 		{
-			return Italian;
+			this->language = Italian;
 		}
 		else if (language == "Spanish")
 		{
-			return Spanish;
+			this->language = Spanish;
 		}
 		else if (language == "French")
 		{
-			return French;
+			this->language = French;
 		}
 		else if (language == "German")
 		{
-			return German;
+			this->language = German;
+		}
+		else
+		{
+			this->language = English;
 		}
 	}
 	vector<Genres> MakeGenres(vector<string> genres)
@@ -152,7 +157,10 @@ private:
 		}
 		return new_genres;
 	}
-
+	void MakeType(string type)
+	{
+		this->type = Type(type);
+	}
 
 public:
 

@@ -18,6 +18,18 @@ void Library::AddNewBook()
 		cout << "An error occurred! Failed to create a book!" << endl;
 	}
 }
+void Library::AddNewBook(Book book, int counter)
+{
+	try
+	{
+		Pair pair(book, counter);
+		books.push_back(pair);
+	}
+	catch (...)
+	{
+		cout << "An error occurred! Failed to create a book!" << endl;
+	}
+}
 void Library::DeleteBook()
 {
 	try

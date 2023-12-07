@@ -46,7 +46,36 @@ class User : public Person
 
 		Status status;
 
+		Order() : book(), BooksCounter(0), address(""), coast(0.0), status(None) {}
 		Order(Book book) : book(book), BooksCounter(0), address(""), coast(0.0), status(None) {}
+
+		void MakeStatus(string status)
+		{
+			if (status == "In_Processing")
+			{
+				this->status = In_Processing;
+			}
+			else if (status == "Sent")
+			{
+				this->status = Sent;
+			}
+			else if (status == "OnTheRroad")
+			{
+				this->status = OnTheRroad;
+			}
+			else if (status == "Delivered")
+			{
+				this->status = Delivered;
+			}
+			else if (status == "Canceled")
+			{
+				this->status = Canceled;
+			}
+			else
+			{
+				this->status = None;
+			}
+		}
 
 		string GetStatus() const;
 		string GetTitle() const
@@ -69,6 +98,7 @@ class User : public Person
 	vector<Order> orders;
 	vector<Book> wishlist; // add id of concrete book and add book to preferences
 
+	User() : cart(), orders(), preferences(), wishlist(), Person() {}
 	User(string name, string surname, int age, string phone, string nickname, string password) : cart(), orders(), preferences(), wishlist(), Person(name, surname, age, phone, nickname, password) {}
 
 public:

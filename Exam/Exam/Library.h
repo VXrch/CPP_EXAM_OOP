@@ -16,7 +16,15 @@ protected:
 	vector<Pair> books;
 
 	void AddNewBook();
+	void AddNewBook(Book book, int counter);
+
 	void DeleteBook();
+
+	Pair MakePair(Book book, int counter)
+	{
+		Pair pair(book, counter);
+		return pair;
+	}
 
 public:
 
