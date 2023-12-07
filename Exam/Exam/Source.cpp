@@ -20,6 +20,17 @@ protected:
 
 public:
 
+	int FindByID(int id) const
+	{
+		for (int i = 0; i < books.size(); i++)
+		{
+			if (books[i].book.GetID() == id)
+			{
+				return i;
+			}
+		}
+	}
+
 	void FindBookBy_title(string title) const;
 	void FindBookBy_title(vector<string> titles) const;
 
@@ -28,12 +39,15 @@ public:
 
 	void FindBookBy_ageRating(int ageRating) const;
 	void FindBookBy_ageRating(vector<int> ageRatings) const;
+	void FindBookBy_ageRating(int min_rating, int max_rating) const;
 
 	void FindBookBy_year(int year) const;
 	void FindBookBy_year(vector<int> year) const;
+	void FindBookBy_year(int min_year, int max_year) const;
 
 	void FindBookBy_price(float price) const;
 	void FindBookBy_price(vector<float> price) const;
+	void FindBookBy_price(float min_price, float max_price) const;
 
 	void FindBookBy_id(unsigned int id) const;
 	void FindBookBy_id(vector<unsigned int> id) const;
@@ -231,6 +245,16 @@ void Library::FindBookBy_ageRating(vector<int> ageRatings) const
 		cout << "An unspecified error has occurred" << endl;
 	}
 }
+void Library::FindBookBy_ageRating(int min_rating, int max_rating) const
+{
+	for (int i = 0; i < books.size(); i++)
+	{
+		if (books[i].book.GetYear() >= min_rating && books[i].book.GetYear() <= max_rating)
+		{
+			books[i].book.PrintShortInfo();
+		}
+	}
+}
 
 void Library::FindBookBy_year(int year) const
 {
@@ -269,6 +293,16 @@ void Library::FindBookBy_year(vector<int> year) const
 		cout << "An unspecified error has occurred" << endl;
 	}
 }
+void Library::FindBookBy_year(int min_year, int max_year) const
+{
+	for (int i = 0; i < books.size(); i++)
+	{
+		if (books[i].book.GetYear() >= min_year && books[i].book.GetYear() <= max_year)
+		{
+			books[i].book.PrintShortInfo();
+		}
+	}
+}
 
 void Library::FindBookBy_price(float price) const
 {
@@ -305,6 +339,16 @@ void Library::FindBookBy_price(vector<float> price) const
 	catch (const std::exception&)
 	{
 		cout << "An unspecified error has occurred" << endl;
+	}
+}
+void Library::FindBookBy_price(float min_price, float max_price) const
+{
+	for (int i = 0; i < books.size(); i++)
+	{
+		if (books[i].book.GetPrice() >= min_price && books[i].book.GetPrice() <= max_price)
+		{
+			books[i].book.PrintShortInfo();
+		}
 	}
 }
 

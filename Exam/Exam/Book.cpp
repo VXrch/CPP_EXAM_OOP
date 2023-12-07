@@ -64,7 +64,7 @@ void Book::Print() const
 }
 void Book::PrintMinInfo() const
 {
-	cout << "Title: " << title << " | Author: " << author << " | Language: " << language << endl;
+	cout << "ID: " << id << "Title: " << title << " | Author: " << author << " | Language: " << language << endl;
 }
 void Book::PrintAllGenres() const
 {

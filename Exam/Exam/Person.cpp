@@ -98,8 +98,8 @@ bool Person::Register(vector<Person> all_users)
 }
 bool Person::LogIn(vector<Person> all_users)
 {
-	bool nckname = false;
-	bool pswrd = false;
+	bool is_found_nickname = false;
+
 	cout << "Enter your nickname: "; cin >> nickname;
 	cout << "Enter your password: "; cin >> password;
 
@@ -107,10 +107,22 @@ bool Person::LogIn(vector<Person> all_users)
 	{
 		if (all_users[i].GetNickname() == nickname)
 		{
-			nckname;
+			is_found_nickname = true;
+			if (all_users[i].GetPassword() == password)
+			{
+				return true;
+			}
 		}
 	}
-	return true;
+	if (is_found_nickname == false)
+	{
+		cout << "Incorrect nickname" << endl;
+	}
+	else
+	{
+		cout << "Incorrect password!" << endl;
+	}
+	return false;
 }
 
 bool Person::MakeNickname(vector<Person> all_users)
@@ -205,7 +217,3 @@ bool Person::isContinue()
 		}
 	}
 }
-
-
-
-
