@@ -47,6 +47,10 @@ class User : public Person
 		Order(Book book) : book(book), BooksCounter(0), address(""), coast(0.0), status(None) {}
 
 		string GetStatus() const;
+		string GetTitle() const
+		{
+			return book.GetTitle();
+		}
 		float GetCoast() const;
 		void Print() const;
 
@@ -61,7 +65,7 @@ class User : public Person
 
 	vector<Book> cart;
 	vector<Order> orders;
-	vector<unsigned int> wishlist; // add id of concrete book and add book to preferences
+	vector<Book> wishlist; // add id of concrete book and add book to preferences
 
 	User(string name, string surname, int age, string phone, string nickname, string password) : cart(), orders(), preferences(), wishlist(), Person(name, surname, age, phone, nickname, password) {}
 
@@ -78,12 +82,17 @@ public:
 		return preferences.GetFavLanguage();
 	}
 
-	void PrintOrders() const;
 	void PrintCart() const;
+	void PrintOrders() const;
+	void PrintWishlist() const;
 
 	void AddToCart(Book Tbook);
 	void PlaceOrder(Book Tbook);
 	void AddToWishlist(Book Tbook);
+
+	void RemoveFromCart();
+	void RemoveFromOrders();
+	void RemoveFromWishlist();
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,5 +104,5 @@ class Admin : public Person
 public:
 
 	void ChangeBookInfo(Book& book);
-	
+	void AddSaleToBook(Book& book);
 };

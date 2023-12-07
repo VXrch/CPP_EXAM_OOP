@@ -27,6 +27,13 @@ void User::PrintCart() const
 		cout << "Shopping cart list is empty!" << endl;
 	}
 }
+void User::PrintWishlist() const
+{
+	for (int i = 0; i < wishlist.size(); i++)
+	{
+		wishlist[i].PrintShortInfo();
+	}
+}
 void User::PrintOrders() const
 {
 	if (!orders.empty())
@@ -41,6 +48,7 @@ void User::PrintOrders() const
 		cout << "Orders list is empty!" << endl;
 	}
 }
+
 void User::AddToCart(Book Tbook)
 {
 	try
@@ -94,13 +102,97 @@ void User::AddToWishlist(Book Tbook)
 {
 	try
 	{
-		wishlist.push_back(Tbook.GetID());
+		wishlist.push_back(Tbook);
 		preferences.NewBook(Tbook);
 	}
 	catch (const exception&)
 	{
 		cout << "Something went wrong when adding a book to your wish list!" << endl;
 	}
+}
+
+void User::RemoveFromCart()
+{
+	PrintCart();
+
+	if (cart.empty())
+	{
+		cout << "Cart is empty!" << endl;
+		return;
+	}
+
+	string title;
+	cout << "Enter book title: "; getline(cin, title);
+
+	for (auto book = cart.begin(); book != cart.end(); )
+	{
+		if (title == book->GetTitle())
+		{
+			book = cart.erase(book);
+			cout << "Book was removed from cart!" << endl;
+			return;
+		}
+		else
+		{
+			++book;
+		}
+	}
+	cout << "Book is not found!" << endl;
+}
+void User::RemoveFromOrders()
+{
+	PrintOrders();
+
+	if (orders.empty())
+	{
+		cout << "Orders list is empty!" << endl;
+		return;
+	}
+
+	string title;
+	cout << "Enter book title: "; getline(cin, title);
+
+	int i = 0;
+	for (auto book = orders.begin(); book != orders.end(); i++)
+	{
+		if (title == orders[i].GetTitle())
+		{
+			book = orders.erase(book);
+			cout << "Book was removed from cart!" << endl;
+			return;
+		}
+		else
+		{
+			++book;
+		}
+	}
+	cout << "Book is not found!" << endl;
+}
+void User::RemoveFromWishlist()
+{
+	if (wishlist.empty())
+	{
+		cout << "Wishlist is empty!" << endl;
+		return;
+	}
+
+	string title;
+	cout << "Enter book title: "; getline(cin, title);
+
+	for (auto book = wishlist.begin(); book != wishlist.end(); )
+	{
+		if (title == book->GetTitle())
+		{
+			book = wishlist.erase(book);
+			cout << "Book was removed from wishlist!" << endl;
+			return;
+		}
+		else
+		{
+			++book;
+		}
+	}
+	cout << "Book is not found!" << endl;
 }
 
 void User::Order::Print() const
@@ -305,3 +397,18 @@ void Admin::ChangeBookInfo(Book& book)
 		}
 	}
 }
+
+void Admin::AddSaleToBook(Book& book)
+{
+	try
+	{
+		float sale;
+		cout << "Enter sale(example: 20.6): "; cin >> sale;
+		book.SetSale(sale);
+	}
+	catch (const std::exception&)
+	{
+		cout << "Sale must be a number!" << endl;
+	}
+}
+

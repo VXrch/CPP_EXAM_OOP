@@ -4,8 +4,8 @@
 #include <conio.h>
 #include <vector>
 #include <string>
-#include <list>
 #include <map>
+// #include <cctype>
 
 using namespace std;
 
@@ -22,6 +22,13 @@ struct Move
 		COORD coord;
 		coord.X = x;
 		coord.Y = y;
+		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+	}
+	void Gotoxy()
+	{
+		COORD coord;
+		coord.X = X;
+		coord.Y = Y;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	}
 	string CatchMove()
@@ -57,5 +64,11 @@ struct Move
 				}
 			}
 		}
+	}
+
+	void operator()(int X, int Y)
+	{
+		this->X = X;
+		this->Y = Y;
 	}
 };

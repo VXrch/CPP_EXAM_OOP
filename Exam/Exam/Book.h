@@ -34,48 +34,10 @@ protected:
 	Language language;
 	vector<Genres> genres;
 
-	float* sale;
+	float sale;
 	Type type;
 
-	Book() : title(""), author(""), discription(""), ageRating(0), year(0), price(0), id(0), language(English), genres(), sale(nullptr), type(0) {}
-	Book(string title, string author, string discription, int year, int ageRating, float price, Language language, vector<Genres> genres, float* sale) : title(title), author(author), discription(discription), year(year), ageRating(ageRating), price(price), language(language), genres(), sale(nullptr)
-	{
-		id = idCounter;
-		idCounter++;
-	}
-
-	void SetTitle(string title)
-	{
-		this->title = title;
-	}
-	void SetAuthor(string author)
-	{
-		this->author = author;
-	}
-	void SetYear(int year)
-	{
-		this->year = year;
-	}
-	void SetPrice(float price)
-	{
-		this->price = price;
-	}
-	void SetLanguage(Language language)
-	{
-		this->language = language;
-	}
-	void SetGenres(Genres genre)
-	{
-		this->genres.push_back(genre);
-	}
-	void SetSale(float* sale)
-	{
-		this->sale = sale;
-	}
-	void SetAgeRating(int ageRating)
-	{
-		this->ageRating = ageRating;
-	}
+private:
 
 	inline void Successed() const
 	{
@@ -84,6 +46,111 @@ protected:
 	inline void Fail() const
 	{
 		system("cls"); cout << "This genre is alredy entered!" << endl; system("pause");
+	}
+
+public:
+
+	Book() : title(""), author(""), discription(""), ageRating(0), year(0), price(0), id(0), language(English), genres(), sale(0), type(0) {}
+	bool Fill();
+
+	void Print() const;
+	void PrintMinInfo() const;
+	void PrintShortInfo() const;
+	void PrintAllGenres() const;
+	void PrintAllLanguages() const;
+	void PrintAllGenres(int X, int Y) const;
+	void PrintAllLanguages(int X, int Y) const;
+
+	string GetLanguage() const;
+	string GetGenre(int number) const;
+	int GetGenresSize() const
+	{
+		return genres.size();
+	}
+	vector<Genres> GetAllGenres() const
+	{
+		return genres;
+	}
+
+	int GetYear() const
+	{
+		return year;
+	}
+	float GetSale() const
+	{
+		return sale;
+	}
+	string GetType() const
+	{
+		return type.type;
+	}
+	float GetPrice() const
+	{
+		return price;
+	}
+	string GetTitle() const
+	{
+		return title;
+	}
+	string GetAuthor() const
+	{
+		return author;
+	}
+	unsigned int GetID() const
+	{
+		return id;
+	}
+	int GetAgeRating() const
+	{
+		return ageRating;
+	}
+
+protected:
+
+	Book(string title, string author, string discription, int year, int ageRating, float price, Language language, vector<Genres> genres, float* sale) : title(title), author(author), discription(discription), year(year), ageRating(ageRating), price(price), language(language), genres(), sale(0)
+	{
+		id = idCounter;
+		idCounter++;
+	}
+
+	void SetYear(int year)
+	{
+		this->year = year;
+	}
+	void SetSale(float sale)
+	{
+		if (sale < 100)
+		{
+			this->sale = sale;
+		}
+		else
+		{
+			cout << "Sale must be < 100%" << endl;
+		}
+	}
+	void SetPrice(float price)
+	{
+		this->price = price;
+	}
+	void SetTitle(string title)
+	{
+		this->title = title;
+	}
+	void SetGenres(Genres genre)
+	{
+		this->genres.push_back(genre);
+	}
+	void SetAuthor(string author)
+	{
+		this->author = author;
+	}
+	void SetAgeRating(int ageRating)
+	{
+		this->ageRating = ageRating;
+	}
+	void SetLanguage(Language language)
+	{
+		this->language = language;
 	}
 
 	bool IsUnique(Genres genre) const
@@ -98,11 +165,9 @@ protected:
 		return true;
 	}
 
-	void Fill();
-
 	void ChangeLanguage()
 	{
-		Move move (2, 2);
+		Move move(2, 2);
 		bool ext = false;
 
 		while (!ext)
@@ -145,55 +210,4 @@ protected:
 
 	friend class Admin;
 	friend struct Order;
-	friend class Library;
-
-public:
-
-	void Print() const;
-	void MinInfo() const;
-	void PrintShortInfo() const;
-	void PrintAllGenres() const;
-	void PrintAllLanguages() const;
-	void PrintAllGenres(int X, int Y) const;
-	void PrintAllLanguages(int X, int Y) const;
-
-	string GetLanguage() const;
-	string GetGenre(int number) const;
-
-	int GetYear() const
-	{
-		return year;
-	}
-	float GetSale() const
-	{
-		if (sale == nullptr)
-		{
-			return 0;
-		}
-		return *sale;
-	}
-	string GetType() const
-	{
-		return type.type;
-	}
-	float GetPrice() const
-	{
-		return price;
-	}
-	string GetTitle() const
-	{
-		return title;
-	}
-	string GetAuthor() const
-	{
-		return author;
-	}
-	unsigned int GetID() const
-	{
-		return id;
-	}
-	vector<Genres> GetAllGenres() const
-	{
-		return genres;
-	}
 };

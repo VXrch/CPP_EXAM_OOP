@@ -62,7 +62,7 @@ void Book::Print() const
 		}
 	}
 }
-void Book::MinInfo() const
+void Book::PrintMinInfo() const
 {
 	cout << "Title: " << title << " | Author: " << author << " | Language: " << language << endl;
 }
@@ -135,22 +135,97 @@ void Book::PrintAllLanguages(int X = 1, int Y = 1) const
 	move.Gotoxy(X, Y); cout << " [Germah]"; Y++;
 }
 
-void Book::Fill()
+bool Book::Fill()
 {
 	try
 	{
+		bool ext = false;
+
 		cout << "Book title: "; getline(cin, title);
 		cout << "Author's name: "; getline(cin, author);
-		cout << "Age rating (number): "; cin >> ageRating;
-		cout << "The year the book was written (number): "; cin >> year;
+
+		while (!ext)
+		{
+			system("cls");
+			cout << "Age rating (number): ";
+
+			if (!(cin >> ageRating))
+			{
+				cin.clear(); // Clear errors
+				cin.ignore(10000, '\n'); // Crear buffer
+				cout << "Age rating must be a number! Incorrect argument!" << endl;
+			}
+			else
+			{
+				if (ageRating < 0 || ageRating > 21)
+				{
+					cout << "Incorrect age rating!" << endl;
+				}
+				else
+				{
+					ext = true;
+				}
+			}
+		}
+		ext = false;
+
+		while (!ext)
+		{
+			system("cls");
+			cout << "The year the book was written (number): ";
+
+			if (!(cin >> year))
+			{
+				cin.clear(); // Clear errors
+				cin.ignore(10000, '\n'); // Crear buffer
+				cout << "Year must be a number! Incorrect argument!" << endl;
+			}
+			else
+			{
+				if (year <= 0 || year > 2023)
+				{
+					cout << "Incorrect year!" << endl;
+				}
+				else
+				{
+					ext = true;
+				}
+			}
+		}
+		ext = false;
+
 		cout << "Book description: "; getline(cin, discription);
-		cout << "Book price (number): "; cin >> price;
+
+		while (!ext)
+		{
+			system("cls");
+			cout << "Book price (number): ";
+
+			if (!(cin >> price))
+			{
+				cin.clear(); // Clear errors
+				cin.ignore(10000, '\n'); // Crear buffer
+				cout << "Price must be a number! Incorrect argument!" << endl;
+			}
+			else
+			{
+				if (price <= 0)
+				{
+					cout << "Incorrect price!" << endl;
+				}
+				else
+				{
+					ext = true;
+				}
+			}
+		}
+		ext = false;
+
 		cout << "\tOK!" << endl;
 		system("pause");
 		system("cls");
 
 		Move move(2, 2);
-		bool ext = false;
 
 		while (!ext)
 		{
@@ -188,6 +263,7 @@ void Book::Fill()
 				move.Y == 7 ? move.Y = 2 : move.Y--;
 			}
 		}
+		ext = false;
 
 		cout << "Enter book's language: ";
 
@@ -356,9 +432,12 @@ void Book::Fill()
 
 		id = idCounter;
 		idCounter++;
+
+		return true;
 	}
 	catch (const exception&)
 	{
-		throw "Error";
+		cout << "An error appeared during the filling process!" << endl;
+		return false;
 	}
 }
