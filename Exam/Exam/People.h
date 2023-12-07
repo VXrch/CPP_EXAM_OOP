@@ -14,6 +14,8 @@ class User : public Person
 		void FindFavoriteAuthor();
 		void FindFavoriteLanguage();
 
+		friend class FilesWork;
+
 	public:
 
 		Preferences() : authors(), languages() {}
@@ -93,6 +95,8 @@ public:
 	void RemoveFromCart();
 	void RemoveFromOrders();
 	void RemoveFromWishlist();
+
+	friend class FilesWork;
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -105,4 +109,6 @@ public:
 
 	void ChangeBookInfo(Book& book);
 	void AddSaleToBook(Book& book);
+
+	friend class FilesWork;
 };

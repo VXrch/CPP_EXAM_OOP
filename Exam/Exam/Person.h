@@ -75,9 +75,20 @@ protected:
 		return id;
 	}
 
-	Status GetStatus() const
+	string GetStatus() const
 	{
-		return account_status;
+		if (account_status == 0)
+		{
+			return "None";
+		}
+		else if (account_status == 1)
+		{
+			return "Active";
+		}
+		else
+		{
+			return "Blocked";
+		}
 	}
 
 	// Set
@@ -120,4 +131,6 @@ protected:
 	{
 		this->idCounter = idcounter;
 	}
+
+	friend class FilesWork;
 };

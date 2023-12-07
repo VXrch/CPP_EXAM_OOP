@@ -70,4 +70,6 @@ public:
 
 	void FindBookBy_language(string language) const;
 	void FindBookBy_language(vector<string> languages) const;
+
+	friend class FilesWork;
 };

@@ -48,6 +48,112 @@ private:
 		system("cls"); cout << "This genre is alredy entered!" << endl; system("pause");
 	}
 
+	Language MakeLanguage(string language)
+	{
+		if (language == "English")
+		{
+			return English;
+		}
+		else if (language == "Ukrainian")
+		{
+			return Ukrainian;
+		}
+		else if (language == "Italian")
+		{
+			return Italian;
+		}
+		else if (language == "Spanish")
+		{
+			return Spanish;
+		}
+		else if (language == "French")
+		{
+			return French;
+		}
+		else if (language == "German")
+		{
+			return German;
+		}
+	}
+	vector<Genres> MakeGenres(vector<string> genres)
+	{
+		vector<Genres> new_genres;
+
+		for (int i = 0; i < genres.size(); i++)
+		{
+			if (genres[i] == "Fantasy")
+			{
+				new_genres.push_back(Fantasy);
+			}
+			else if (genres[i] == "ScienceFiction")
+			{
+				new_genres.push_back(ScienceFiction);
+			}
+			else if (genres[i] == "Dystopian")
+			{
+				new_genres.push_back(Dystopian);
+			}
+			else if (genres[i] == "Action")
+			{
+				new_genres.push_back(Action);
+			}
+			else if (genres[i] == "Mystery")
+			{
+				new_genres.push_back(Mystery);
+			}
+			else if (genres[i] == "Horror")
+			{
+				new_genres.push_back(Horror);
+			}
+			else if (genres[i] == "Thriller")
+			{
+				new_genres.push_back(Thriller);
+			}
+			else if (genres[i] == "HistoricalFiction")
+			{
+				new_genres.push_back(HistoricalFiction);
+			}
+			else if (genres[i] == "Romance")
+			{
+				new_genres.push_back(Romance);
+			}
+			else if (genres[i] == "ContemporaryFiction")
+			{
+				new_genres.push_back(ContemporaryFiction);
+			}
+			else if (genres[i] == "MagicalRealism")
+			{
+				new_genres.push_back(MagicalRealism);
+			}
+			else if (genres[i] == "GraphicNovel")
+			{
+				new_genres.push_back(GraphicNovel);
+			}
+			else if (genres[i] == "Memoir")
+			{
+				new_genres.push_back(Memoir);
+			}
+			else if (genres[i] == "Biography")
+			{
+				new_genres.push_back(Biography);
+			}
+			else if (genres[i] == "Travel")
+			{
+				new_genres.push_back(Travel);
+			}
+			else if (genres[i] == "TrueCrime")
+			{
+				new_genres.push_back(TrueCrime);
+			}
+			else if (genres[i] == "Humor")
+			{
+				new_genres.push_back(Humor);
+			}
+		}
+		return new_genres;
+	}
+
+
 public:
 
 	Book() : title(""), author(""), discription(""), ageRating(0), year(0), price(0), id(0), language(English), genres(), sale(0), type(0) {}
@@ -203,4 +309,5 @@ protected:
 
 	friend class Admin;
 	friend struct Order;
+	friend class FilesWork;
 };

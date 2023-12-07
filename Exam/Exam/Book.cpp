@@ -68,23 +68,23 @@ void Book::PrintMinInfo() const
 }
 void Book::PrintAllGenres() const
 {
-	cout << "[Fantasy] ";
-	cout << " [Science Fiction] ";
-	cout << " [Dystopian] ";
-	cout << " [Action] ";
-	cout << " [Mystery] ";
-	cout << " [Horror] ";
-	cout << " [Thriller] ";
-	cout << " [Historical Fiction] ";
-	cout << " [Romance] ";
-	cout << " [Contemporary Fiction] ";
-	cout << " [Magical Realism] ";
-	cout << " [Graphic Novel] ";
-	cout << " [Memoir] ";
-	cout << " [Biography] ";
-	cout << " [Travel] ";
-	cout << " [True Crime] ";
-	cout << " [Humor]";
+	cout << "[Fantasy] " << endl;
+	cout << " [Science Fiction] " << endl;
+	cout << " [Dystopian] " << endl;
+	cout << " [Action] " << endl;
+	cout << " [Mystery] " << endl;
+	cout << " [Horror] " << endl;
+	cout << " [Thriller] " << endl;
+	cout << " [Historical Fiction] " << endl;
+	cout << " [Romance] " << endl;
+	cout << " [Contemporary Fiction] " << endl;
+	cout << " [Magical Realism] " << endl;
+	cout << " [Graphic Novel] " << endl;
+	cout << " [Memoir] " << endl;
+	cout << " [Biography] " << endl;
+	cout << " [Travel] " << endl;
+	cout << " [True Crime] " << endl;
+	cout << " [Humor]" << endl;
 }
 void Book::PrintShortInfo() const
 {
@@ -94,11 +94,11 @@ void Book::PrintShortInfo() const
 }
 void Book::PrintAllLanguages() const
 {
-	cout << "[English] ";
-	cout << " [Ukrainiah] ";
-	cout << " [Italiah] ";
-	cout << " [Spanish] ";
-	cout << " [French] ";
+	cout << "[English]";
+	cout << " [Ukrainian]";
+	cout << " [Italian]";
+	cout << " [Spanish]";
+	cout << " [French]";
 	cout << " [Germah]";
 }
 void Book::PrintAllGenres(int X = 1, int Y = 1) const
