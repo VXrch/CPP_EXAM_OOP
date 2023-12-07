@@ -403,12 +403,11 @@ void Admin::AddSaleToBook(Book& book)
 	try
 	{
 		float sale;
-		cout << "Enter sale(example: 20.6): "; cin >> sale;
+		cout << "Enter sale in percentage (for example: [20.6]): "; cin >> sale;
 		book.SetSale(sale);
 	}
-	catch (const std::exception&)
+	catch (...)
 	{
 		cout << "Sale must be a number!" << endl;
 	}
 }
-

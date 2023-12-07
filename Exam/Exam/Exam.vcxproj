@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Book.cpp" />
+    <ClCompile Include="Library.cpp" />
     <ClCompile Include="Move.h" />
     <ClCompile Include="People.cpp" />
     <ClCompile Include="Person.cpp" />
@@ -135,7 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h" />
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="Library.h" />
     <ClInclude Include="People.h" />
     <ClInclude Include="Person.h" />
   </ItemGroup>

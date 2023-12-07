@@ -20,7 +20,7 @@ protected:
 			type = to_string(year), language, ageRating;
 		}
 	};
-
+	
 	string title;
 	string author;
 	string discription;
@@ -119,14 +119,7 @@ protected:
 	}
 	void SetSale(float sale)
 	{
-		if (sale < 100)
-		{
-			this->sale = sale;
-		}
-		else
-		{
-			cout << "Sale must be < 100%" << endl;
-		}
+		this->sale = sale;
 	}
 	void SetPrice(float price)
 	{

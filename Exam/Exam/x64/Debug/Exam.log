@@ -1,11 +1,6 @@
-﻿  Person.cpp
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Book.h(68,21): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+﻿  Move.h
   Source.cpp
 C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Book.h(68,21): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Source.cpp(54,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Source.cpp(14,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
   Создание кода...
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Person.cpp(149): warning C4715: Person::MakeNickname: значение возвращается не при всех путях выполнения
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Person.cpp(169): warning C4715: Person::MakeUpPassword: значение возвращается не при всех путях выполнения
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Person.cpp(207): warning C4715: Person::isContinue: значение возвращается не при всех путях выполнения
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Move.h(67): warning C4715: Move::CatchMove: значение возвращается не при всех путях выполнения
   Exam.vcxproj -> C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\x64\Debug\Exam.exe
