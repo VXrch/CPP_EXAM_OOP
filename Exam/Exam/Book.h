@@ -185,6 +185,35 @@ public:
 	{
 		return genres;
 	}
+	vector<string> GetAllGenres_string() const
+	{
+		vector<string> string_genres;
+
+		for (int i = 0; i < genres.size(); i++)
+		{
+			switch (genres[i])
+			{
+			case Book::Fantasy: string_genres.push_back("Fantasy"); break;
+			case Book::ScienceFiction:string_genres.push_back("ScienceFiction"); break;
+			case Book::Dystopian:string_genres.push_back("Dystopian"); break;
+			case Book::Action:string_genres.push_back("Action"); break;
+			case Book::Mystery:string_genres.push_back("Mystery"); break;
+			case Book::Horror:string_genres.push_back("Horror"); break;
+			case Book::Thriller:string_genres.push_back("Thriller"); break;
+			case Book::HistoricalFiction:string_genres.push_back("HistoricalFiction"); break;
+			case Book::Romance:string_genres.push_back("Romance"); break;
+			case Book::ContemporaryFiction:string_genres.push_back("ContemporaryFiction"); break;
+			case Book::MagicalRealism:string_genres.push_back("MagicalRealism"); break;
+			case Book::GraphicNovel:string_genres.push_back("GraphicNovel"); break;
+			case Book::Memoir:string_genres.push_back("Memoir"); break;
+			case Book::Biography:string_genres.push_back("Biography"); break;
+			case Book::Travel:string_genres.push_back("Travel"); break;
+			case Book::TrueCrime:string_genres.push_back("TrueCrime"); break;
+			case Book::Humor:string_genres.push_back("Humor"); break;
+			}
+		}
+		return string_genres;
+	}
 
 	int GetYear() const
 	{

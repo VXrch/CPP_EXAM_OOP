@@ -1,5 +1,7 @@
-﻿  Source.cpp
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Book.h(182,21): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Source.cpp(99,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
-C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\Exam\Move.h(67): warning C4715: Move::CatchMove: значение возвращается не при всех путях выполнения
-  Exam.vcxproj -> C:\Users\User\OneDrive\Рабочий стол\Exam\Exam\x64\Debug\Exam.exe
+﻿  People.cpp
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Book.h(182,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\People.cpp(91): warning C4715: 'User::MakeNickname': not all control paths return a value
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\People.cpp(57): warning C4715: 'User::MakeUpPassword': not all control paths return a value
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\People.cpp(418): warning C4715: 'User::Order::GetStatus': not all control paths return a value
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Move.h(67): warning C4715: 'Move::CatchMove': not all control paths return a value
+  Exam.vcxproj -> C:\Users\dev\Desktop\C++_Exam\Exam\x64\Debug\Exam.exe

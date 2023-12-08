@@ -14,7 +14,7 @@ struct Move
 	int Y;
 
 	Move() : X(0), Y(0) {}
-	Move(int X, int Y) : X(0), Y(0) {}
+	Move(int X, int Y) : X(X), Y(Y) {}
 
 	void Gotoxy(int x, int y)
 	{
@@ -26,8 +26,8 @@ struct Move
 	void Gotoxy()
 	{
 		COORD coord;
-		coord.X = X;
-		coord.Y = Y;
+		coord.X = this->X;
+		coord.Y = this->Y;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	}
 	string CatchMove()

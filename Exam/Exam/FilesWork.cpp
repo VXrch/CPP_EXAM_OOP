@@ -1,6 +1,6 @@
 #include "FilesWork.h"
 
-#define MyDebug
+//#define MyDebug
 
 void FilesWork::ReadLibrary(Library& library)
 {
@@ -66,7 +66,6 @@ void FilesWork::ReadLibrary(Library& library)
 #ifdef MyDebug
 	else
 	{
-
 		cout << "File does not exist!" << endl;
 	}
 #endif
@@ -520,9 +519,9 @@ void FilesWork::WriteUsers(vector<User>& users)
 
 		outputFile.close();
 	}
+#ifdef MyDebug
 	else
 	{
-#ifdef MyDebug
 		cout << "I can't open the file!" << endl;
 	}
 #endif

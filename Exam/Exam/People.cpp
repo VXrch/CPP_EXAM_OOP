@@ -3,11 +3,11 @@
 
 bool User::MakeUpPassword()
 {
-	bool ext = false;
+	bool ext = false, password_len = false, fd_capital = false, fd_small = false, fd_numbers = false;
 	while (!ext)
 	{
 		cout << "To exit press [0]" << endl;
-		cout << "The password must contain at least 8 characters, numbers and letters." << endl;
+		cout << "The password must contain at least 8 characters, numbers capital and small letters." << endl;
 		cout << "your password: "; cin >> password;
 
 		if (password == "0")
@@ -15,19 +15,59 @@ bool User::MakeUpPassword()
 			return false;
 		}
 
+		for (auto symbhol : password)
+		{
+			if (isdigit(symbhol))
+			{
+				fd_numbers = true;
+			}
+			else if (isupper(symbhol))
+			{
+				fd_capital = true;
+			}
+			else if (islower(symbhol))
+			{
+				fd_small = true;
+			}
+		}
+
 		if (password.length() < 8)
 		{
-
+			cout << "Password length is smaller than 8! Make up a longer one!" << endl << endl;
 		}
+		else
+		{
+			password_len = true;
+		}
+		if (fd_numbers == false)
+		{
+			cout << "The password must have numbers!" << endl << endl;
+		}
+		if (fd_capital == false)
+		{
+			cout << "The password must have capital letters!" << endl << endl;
+		}
+		if (fd_small == false)
+		{
+			cout << "The password must have small letters!" << endl << endl;
+		}
+
+		if (fd_numbers == true && fd_small == true && fd_numbers == true && password_len == true)
+		{
+			return true;
+		}
+		
+		system("pause");
+		system("cls");
 	}
 }
 bool User::MakeNickname(vector<User> all_users)
 {
-	bool ext = false, go = false;
+	bool ext = false, go = true;
 	while (!ext)
 	{
 		cout << "To exit press [0]" << endl;
-		cout << "Make up a nickname:"; cin >> nickname;
+		cout << "Make up a nickname:  "; cin >> nickname;
 
 		if (nickname == "0")
 		{
@@ -60,6 +100,7 @@ bool User::Register(vector<User> all_users)
 {
 	try
 	{
+		system("cls");
 		bool ext = false;
 
 		cout << "Fill out the form with information about yourself: " << endl;
@@ -75,6 +116,8 @@ bool User::Register(vector<User> all_users)
 			{
 				cin.clear(); // Clear errors
 				cin.ignore(10000, '\n'); // Crear buffer
+
+				system("pause");
 				cout << "Age must be a number! Incorrect argument!" << endl;
 			}
 			else
@@ -88,8 +131,7 @@ bool User::Register(vector<User> all_users)
 
 		while (!ext)
 		{
-			bool go = false;
-			go = MakeNickname(all_users);
+			bool go = MakeNickname(all_users);
 
 			if (go == false)
 			{
@@ -398,6 +440,12 @@ void User::Preferences::NewBook(Book book)
 {
 	this->authors[book.GetAuthor()]++;
 	this->languages[book.GetLanguage()]++;
+	
+	vector<string> string_genre = book.GetAllGenres_string();
+	for (int i = 0; i < string_genre.size(); i++)
+	{
+		this->genres[string_genre[i]]++;
+	}
 
 	FindFavoriteAuthor();
 	FindFavoriteLanguage();
@@ -450,6 +498,19 @@ void User::Preferences::FindFavoriteLanguage()
 		if (pair.second > maxValue)
 		{
 			favoriteLanguage = pair.first;
+			maxValue = pair.second;
+		}
+	}
+}
+void User::Preferences::FindFavoriteGenre()
+{
+	int maxValue = 0;
+
+	for (const auto& pair : genres)
+	{
+		if (pair.second > maxValue)
+		{
+			favoriteGenre = pair.first;
 			maxValue = pair.second;
 		}
 	}

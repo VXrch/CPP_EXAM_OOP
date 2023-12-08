@@ -7,12 +7,15 @@ class User : public Person
 	{
 		map<string, int> authors;
 		map<string, int> languages;
+		map<string, int> genres;
 
 		string favoriteAuthor;
 		string favoriteLanguage;
+		string favoriteGenre;
 
 		void FindFavoriteAuthor();
 		void FindFavoriteLanguage();
+		void FindFavoriteGenre();
 
 		friend class FilesWork;
 
@@ -25,6 +28,10 @@ class User : public Person
 			return favoriteAuthor;
 		}
 		string GetFavLanguage() const
+		{
+			return favoriteLanguage;
+		}
+		string GetFavGenre() const
 		{
 			return favoriteLanguage;
 		}
