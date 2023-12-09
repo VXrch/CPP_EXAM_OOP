@@ -95,22 +95,48 @@ void Library::DeleteBook(Book& book)
 
 void Library::FindBookBy_NumberOfBooks(int number) const
 {
-	for (int i = 0; i < books.size(); i++)
+	try
 	{
-		if (books[i].counter == number)
+		bool found = false;
+		for (int i = 0; i < books.size(); i++)
 		{
-			books[i].book.PrintShortInfo();
+			if (books[i].counter == number)
+			{
+				books[i].book.PrintShortInfo();
+				found = true;
+			}
+			if (found == false)
+			{
+				cout << "There are no books that would satisfy the request" << endl;
+			}
 		}
+	}
+	catch (...)
+	{
+		cout << "An unspecified error has occurred" << endl;
 	}
 }
 void Library::FindBookBy_NumberOfBooks(int min_number, int max_number) const
 {
-	for (int i = 0; i < books.size(); i++)
+	try
 	{
-		if (books[i].counter >= min_number && books[i].counter <= max_number)
+		bool found = false;
+		for (int i = 0; i < books.size(); i++)
 		{
-			books[i].book.PrintShortInfo();
+			if (books[i].counter >= min_number && books[i].counter <= max_number)
+			{
+				books[i].book.PrintShortInfo();
+				found = true;
+			}
+			if (found == false)
+			{
+				cout << "There are no books that would satisfy the request" << endl;
+			}
 		}
+	}
+	catch (...)
+	{
+		cout << "An unspecified error has occurred" << endl;
 	}
 }
 
@@ -118,15 +144,21 @@ void Library::FindBookBy_type(string type) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			if (books[i].book.GetType() == type)
 			{
 				books[i].book.PrintShortInfo();
+				found = true;
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
@@ -136,15 +168,21 @@ void Library::FindBookBy_title(string title) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			if (books[i].book.GetTitle() == title)
 			{
 				books[i].book.PrintShortInfo();
+				found = true;
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
@@ -153,6 +191,7 @@ void Library::FindBookBy_title(vector<string> titles) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			for (int j = 0; j < titles.size(); j++)
@@ -160,11 +199,16 @@ void Library::FindBookBy_title(vector<string> titles) const
 				if (books[i].book.GetTitle() == titles[j])
 				{
 					books[i].book.PrintShortInfo();
+					found = true;
 				}
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
@@ -174,15 +218,21 @@ void Library::FindBookBy_author(string author) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			if (books[i].book.GetAuthor() == author)
 			{
 				books[i].book.PrintShortInfo();
+				found = true;
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
@@ -191,6 +241,7 @@ void Library::FindBookBy_author(vector<string> authors) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			for (int j = 0; j < authors.size(); j++)
@@ -198,11 +249,16 @@ void Library::FindBookBy_author(vector<string> authors) const
 				if (books[i].book.GetAuthor() == authors[j])
 				{
 					books[i].book.PrintShortInfo();
+					found = true;
 				}
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
@@ -212,15 +268,21 @@ void Library::FindBookBy_ageRating(int ageRating) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			if (books[i].book.GetAgeRating() == ageRating)
 			{
 				books[i].book.PrintShortInfo();
+				found = true;
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
@@ -229,6 +291,7 @@ void Library::FindBookBy_ageRating(vector<int> ageRatings) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			for (int j = 0; j < ageRatings.size(); j++)
@@ -236,23 +299,41 @@ void Library::FindBookBy_ageRating(vector<int> ageRatings) const
 				if (books[i].book.GetAgeRating() == ageRatings[j])
 				{
 					books[i].book.PrintShortInfo();
+					found = true;
 				}
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
 }
 void Library::FindBookBy_ageRating(int min_rating, int max_rating) const
 {
-	for (int i = 0; i < books.size(); i++)
+	try
 	{
-		if (books[i].book.GetYear() >= min_rating && books[i].book.GetYear() <= max_rating)
+		bool found = false;
+		for (int i = 0; i < books.size(); i++)
 		{
-			books[i].book.PrintShortInfo();
+			if (books[i].book.GetYear() >= min_rating && books[i].book.GetYear() <= max_rating)
+			{
+				books[i].book.PrintShortInfo();
+				found = true;
+			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
+	}
+	catch (...)
+	{
+		cout << "An unspecified error has occurred" << endl;
 	}
 }
 
@@ -260,15 +341,21 @@ void Library::FindBookBy_year(int year) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			if (books[i].book.GetYear() == year)
 			{
 				books[i].book.PrintShortInfo();
+				found = true;
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
@@ -277,6 +364,7 @@ void Library::FindBookBy_year(vector<int> year) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			for (int j = 0; j < year.size(); j++)
@@ -284,23 +372,42 @@ void Library::FindBookBy_year(vector<int> year) const
 				if (books[i].book.GetYear() == year[j])
 				{
 					books[i].book.PrintShortInfo();
+					found = true;
 				}
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
 }
 void Library::FindBookBy_year(int min_year, int max_year) const
 {
-	for (int i = 0; i < books.size(); i++)
+	try
 	{
-		if (books[i].book.GetYear() >= min_year && books[i].book.GetYear() <= max_year)
+		bool found = false;
+		for (int i = 0; i < books.size(); i++)
 		{
-			books[i].book.PrintShortInfo();
+			if (books[i].book.GetYear() >= min_year && books[i].book.GetYear() <= max_year)
+			{
+				books[i].book.PrintShortInfo();
+				found = true;
+			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
+	}
+	catch (...)
+	{
+		cout << "An unspecified error has occurred" << endl;
+
 	}
 }
 
@@ -308,15 +415,21 @@ void Library::FindBookBy_price(float price) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			if (books[i].book.GetPrice() == price)
 			{
 				books[i].book.PrintShortInfo();
+				found = true;
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
@@ -325,6 +438,7 @@ void Library::FindBookBy_price(vector<float> price) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			for (int j = 0; j < price.size(); j++)
@@ -332,41 +446,73 @@ void Library::FindBookBy_price(vector<float> price) const
 				if (books[i].book.GetPrice() == price[j])
 				{
 					books[i].book.PrintShortInfo();
+					found = true;
 				}
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
 }
 void Library::FindBookBy_price(float min_price, float max_price) const
 {
-	for (int i = 0; i < books.size(); i++)
+	try
 	{
-		if (books[i].book.GetPrice() >= min_price && books[i].book.GetPrice() <= max_price)
+		bool found = false;
+		for (int i = 0; i < books.size(); i++)
 		{
-			books[i].book.PrintShortInfo();
+			if (books[i].book.GetPrice() >= min_price && books[i].book.GetPrice() <= max_price)
+			{
+				books[i].book.PrintShortInfo();
+				found = true;
+			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
+	}
+	catch (...)
+	{
+		cout << "An unspecified error has occurred" << endl;
 	}
 }
 
 void Library::FindBookBy_id(unsigned int id) const
 {
-	for (int i = 0; i < books.size(); i++)
+	try
 	{
-		if (books[i].book.GetID() == id)
+		bool found = false;
+		for (int i = 0; i < books.size(); i++)
 		{
-			books[i].book.PrintShortInfo();
+			if (books[i].book.GetID() == id)
+			{
+				books[i].book.PrintShortInfo();
+				found = true;
+			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
+		throw IdDoesNotExist();
 	}
-	throw IdDoesNotExist();
+	catch (const exception&)
+	{
+		cout << "An unspecified error has occurred" << endl;
+	}
 }
 void Library::FindBookBy_id(vector<unsigned int> id) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			for (int j = 0; j < id.size(); j++)
@@ -374,11 +520,16 @@ void Library::FindBookBy_id(vector<unsigned int> id) const
 				if (books[i].book.GetID() == id[j])
 				{
 					books[i].book.PrintShortInfo();
+					found = true;
 				}
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
@@ -387,15 +538,21 @@ void Library::FindBookBy_id(int min_id, int max_id) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			if (min_id <= books[i].book.GetID() && books[i].book.GetID() <= max_id)
 			{
 				books[i].book.PrintShortInfo();
+				found = true;
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
@@ -405,6 +562,7 @@ void Library::FindBookBy_Genre(string genre) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			for (int j = 0; j < books[i].book.GetGenresSize(); j++)
@@ -412,11 +570,16 @@ void Library::FindBookBy_Genre(string genre) const
 				if (books[i].book.GetGenre(j) == genre)
 				{
 					books[i].book.PrintShortInfo();
+					found = true;
 				}
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
@@ -425,6 +588,7 @@ void Library::FindBookBy_Genre(vector<string> genres) const
 {
 	try
 	{
+		bool found = false;
 		vector<string> books_genres;
 
 		for (int i = 0; i < books[i].book.GetGenresSize(); i++)
@@ -441,12 +605,17 @@ void Library::FindBookBy_Genre(vector<string> genres) const
 					if (books_genres[j] == genres[k])
 					{
 						books[i].book.PrintShortInfo();
+						found = true;
 					}
 				}
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
@@ -456,15 +625,21 @@ void Library::FindBookBy_language(string language) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			if (books[i].book.GetLanguage() == language)
 			{
 				books[i].book.PrintShortInfo();
+				found = true;
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}
@@ -473,6 +648,7 @@ void Library::FindBookBy_language(vector<string> languages) const
 {
 	try
 	{
+		bool found = false;
 		for (int i = 0; i < books.size(); i++)
 		{
 			for (int j = 0; j < languages.size(); j++)
@@ -480,11 +656,16 @@ void Library::FindBookBy_language(vector<string> languages) const
 				if (books[i].book.GetLanguage() == languages[i])
 				{
 					books[i].book.PrintShortInfo();
+					found = true;
 				}
 			}
 		}
+		if (found == false)
+		{
+			cout << "There are no books that would satisfy the request" << endl;
+		}
 	}
-	catch (const exception&)
+	catch (...)
 	{
 		cout << "An unspecified error has occurred" << endl;
 	}

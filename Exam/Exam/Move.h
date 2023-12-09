@@ -65,7 +65,6 @@ struct Move
 
 	string CatchMove()
 	{
-		system("cls");
 		bool ext = false;
 
 		while (ext == false)
@@ -102,15 +101,34 @@ struct Move
 
 	string PasswordAnimation()
 	{
-		bool ext = false;
 		string password;
 		int password_len = 0;
 
-		while (!ext)
+		char key = '-';
+
+		while (key != '\r')
 		{
-			
-			
+			for (int i = 0; i < password_len; i++)
+			{
+				cout << "*";
+			}
+
+			key = _getch();
+
+			password += key;
+			password_len++;
+
+			cout << key;
+			for (int i = 0; i < 16000; i += 1)
+			{
+				if (_kbhit())
+				{
+					break;
+				}
+			}
+			system("cls");
 		}
+		return password;
 	}
 
 	void hidecursor()

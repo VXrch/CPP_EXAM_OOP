@@ -27,13 +27,13 @@ class Menu
 
 	string LogIn(vector<User> users, vector<Admin> admins, Who_I_Am& me)
 	{
-		Admin admin; User user;
+		Move move; Admin admin; User user;
 
 		bool is_found = false;
 		string nickname, password;
 
 		cout << "Enter your nickname: "; cin >> nickname;
-		cout << "Enter your password: "; cin >> password;
+		cout << "Enter your password: "; password = move.PasswordAnimation();
 
 		if (!admins.empty())
 		{
@@ -82,6 +82,7 @@ class Menu
 
 		while (!ext)
 		{
+			system("cls");
 			i = 0;
 
 			move.Gotoxy(2, i); cout << "Find book in range...";
@@ -91,6 +92,7 @@ class Menu
 			move.Gotoxy(); cout << "->";
 
 			string go_to = move.CatchMove();
+			system("cls");
 
 			if (go_to == "enter")
 			{
@@ -127,6 +129,7 @@ class Menu
 
 		while (!ext)
 		{
+			system("cls");
 			i = 0;
 
 			move.Gotoxy(3, i); cout << "-*-*-*-*-*-*-*| Find book by |**-*-*-*-*-*-"; i++;
@@ -143,6 +146,7 @@ class Menu
 			move.Gotoxy(); cout << "->";
 
 			string go_to = move.CatchMove();
+			system("cls");
 
 			if (go_to == "enter")
 			{
@@ -243,6 +247,7 @@ class Menu
 
 		while (!ext)
 		{
+			system("cls");
 			i = 0;
 
 			move.Gotoxy(3, i); cout << "-*-*-*-*-*-*-*| Find book by |**-*-*-*-*-*-";
@@ -260,6 +265,7 @@ class Menu
 			move.Gotoxy(); cout << "->";
 
 			string go_to = move.CatchMove();
+			system("cls");
 
 			if (go_to == "enter")
 			{
@@ -269,10 +275,8 @@ class Menu
 					{
 						cout << "Find by number of books" << endl;
 
-						cout << "Min range: "; cin >> r1;
-						move.SecureEnter(r1);
-						cout << "Max range: "; cin >> r2;
-						move.SecureEnter(r2);
+						cout << "Min range: "; move.SecureEnter(r1);
+						cout << "Max range: "; move.SecureEnter(r2);
 
 						library.FindBookBy_NumberOfBooks(r1, r2);
 					}
@@ -280,10 +284,8 @@ class Menu
 					{
 						cout << "Find by age rating" << endl;
 
-						cout << "Min range: "; cin >> r1;
-						move.SecureEnter(r1);
-						cout << "Max range: "; cin >> r2;
-						move.SecureEnter(r2);
+						cout << "Min range: "; move.SecureEnter(r1);
+						cout << "Max range: "; move.SecureEnter(r2);
 
 						library.FindBookBy_ageRating(r1, r2);
 					}
@@ -291,10 +293,8 @@ class Menu
 					{
 						cout << "Find by year" << endl;
 
-						cout << "Min range: "; cin >> r1;
-						move.SecureEnter(r1);
-						cout << "Max range: "; cin >> r2;
-						move.SecureEnter(r2);
+						cout << "Min range: "; move.SecureEnter(r1);
+						cout << "Max range: "; move.SecureEnter(r2);
 
 						library.FindBookBy_year(r1, r2);
 					}
@@ -302,10 +302,8 @@ class Menu
 					{
 						cout << "Find by price" << endl;
 
-						cout << "Min range: "; cin >> r1;
-						move.SecureEnter(r1);
-						cout << "Max range: "; cin >> r2;
-						move.SecureEnter(r2);
+						cout << "Min range: "; move.SecureEnter(r1);
+						cout << "Max range: "; move.SecureEnter(r2);
 
 						library.FindBookBy_price(r1, r2);
 					}
@@ -313,10 +311,8 @@ class Menu
 					{
 						cout << "Find by id" << endl;
 
-						cout << "Min range: "; cin >> r1;
-						move.SecureEnter(r1);
-						cout << "Max range: "; cin >> r2;
-						move.SecureEnter(r2);
+						cout << "Min range: "; move.SecureEnter(r1);
+						cout << "Max range: ";  move.SecureEnter(r2);
 
 						library.FindBookBy_id(r1, r2);
 					}
@@ -382,6 +378,7 @@ class Menu
 
 		while (!ext)
 		{
+			system("cls");
 			i = 0;
 
 			move.Gotoxy(2, i); cout << "Choose what do you want to do next: ";
@@ -397,6 +394,7 @@ class Menu
 			move.Gotoxy(); cout << "->";
 
 			string go_to = move.CatchMove();
+			system("cls");
 
 			if (go_to == "enter")
 			{
@@ -469,6 +467,7 @@ class Menu
 			move.Gotoxy(); cout << "->";
 
 			string go_to = move.CatchMove();
+			system("cls");
 
 			if (go_to == "enter")
 			{
@@ -536,6 +535,7 @@ class Menu
 	{
 		try
 		{
+			system("cls");
 			Move move;
 
 			int id_to_search;
@@ -627,6 +627,7 @@ public:
 		bool ext = false;
 		while (ext == false)
 		{
+			system("cls");
 			i = 0;
 
 			move.Gotoxy(1, i); cout << "+-+-+-+-+-| Welcome to book shop! | -+-+-+-+-+" << endl; 
@@ -640,6 +641,7 @@ public:
 			move.Gotoxy(); cout << "-->";
 
 			string go_to = move.CatchMove();
+			system("cls");
 
 			if (go_to == "enter")
 			{
@@ -695,6 +697,7 @@ public:
 
 	void FinishProgram()
 	{
+		system("cls");
 		fw.WriteToFile(library, admins, users);
 	}
 
