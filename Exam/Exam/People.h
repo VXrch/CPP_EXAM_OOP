@@ -111,6 +111,14 @@ public:
 	User(string name, string surname, int age, string phone, string nickname, string password) : cart(), orders(), preferences(), wishlist(), Person(name, surname, age, phone, nickname, password) {}
 
 	void Print() const;
+	bool isEmpty() const
+	{
+		if (account_status == None && nickname == "" && password == "")
+		{
+			return true;
+		}
+		return false;
+	}
 
 	string GetFavoriteAuthor() const
 	{
@@ -125,7 +133,7 @@ public:
 	bool MakeNickname(vector<User> all_users);
 
 	bool Register(vector<User> all_users);
-	bool LogIn(vector<User> admins, string nickname, string password);
+	User LogIn(vector<User> admins, string nickname, string password);
 
 	void PrintCart() const;
 	void PrintOrders() const;
@@ -153,5 +161,16 @@ public:
 	void ChangeBookInfo(Book& book);
 	void AddSaleToBook(Book& book);
 
-	bool LogIn(vector<Admin> admins, string nickname, string password);
+	void DeleteBook();
+
+	bool isEmpty() const
+	{
+		if (account_status == None && nickname == "" && password == "")
+		{
+			return true;
+		}
+		return false;
+	}
+
+	Admin LogIn(vector<Admin> admins, string nickname, string password);
 };

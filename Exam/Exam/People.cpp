@@ -61,7 +61,7 @@ bool User::MakeUpPassword()
 		system("cls");
 	}
 }
-bool User::MakeNickname(vector<User> all_users)
+bool User::MakeNickname(const vector<User> all_users)
 {
 	bool ext = false, go = true;
 	while (!ext)
@@ -96,7 +96,7 @@ bool User::MakeNickname(vector<User> all_users)
 	}
 }
 
-bool User::Register(vector<User> all_users)
+bool User::Register(const vector<User> all_users)
 {
 	try
 	{
@@ -117,8 +117,8 @@ bool User::Register(vector<User> all_users)
 				cin.clear(); // Clear errors
 				cin.ignore(10000, '\n'); // Crear buffer
 
-				system("pause");
 				cout << "Age must be a number! Incorrect argument!" << endl;
+				system("pause");
 			}
 			else
 			{
@@ -181,7 +181,7 @@ bool User::Register(vector<User> all_users)
 		return false;
 	}
 }
-bool User::LogIn(vector<User> users, string nickname, string password)
+User User::LogIn(vector<User> users, string nickname, string password)
 {
 	for (int i = 0; i < users.size(); i++)
 	{
@@ -189,11 +189,11 @@ bool User::LogIn(vector<User> users, string nickname, string password)
 		{
 			if (users[i].password == password)
 			{
-				return true;
+				return users[i];
 			}
 		}
 	}
-	return false;
+	return User();
 }
 
 void User::Print() const
@@ -627,7 +627,7 @@ void Admin::AddSaleToBook(Book& book)
 	}
 }
 
-bool Admin::LogIn(vector<Admin> admins, string nickname, string password)
+Admin Admin::LogIn(vector<Admin> admins, string nickname, string password)
 {
 	for (int i = 0; i < admins.size(); i++)
 	{
@@ -635,9 +635,9 @@ bool Admin::LogIn(vector<Admin> admins, string nickname, string password)
 		{
 			if (admins[i].password == password)
 			{
-				return true;
+				return admins[i];
 			}
 		}
 	}
-	return false;
+	return Admin();
 }

@@ -8,6 +8,38 @@
 
 using namespace std;
 
+class IncorrectValue : public exception
+{
+public:
+
+	friend ostream& operator<<(ostream& os, const IncorrectValue& obj)
+	{
+		os << "An incorrect data type has been entered! ";
+		return os;
+	}
+};
+class IdDoesNotExist : public exception
+{
+public:
+
+	friend ostream& operator<<(ostream& os, const IdDoesNotExist& obj) 
+	{
+		os << "That id doesn't exist! ";
+		return os;
+	}
+};
+class PermissionDenied : public exception
+{
+public:
+
+	friend ostream& operator<<(ostream& os, const PermissionDenied& obj)
+	{
+		os << "This menu is for administrators only. Permission denied!";
+		return os;
+	}
+};
+
+
 struct Move
 {
 	int X;
@@ -30,8 +62,10 @@ struct Move
 		coord.Y = this->Y;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	}
+
 	string CatchMove()
 	{
+		system("cls");
 		bool ext = false;
 
 		while (ext == false)
@@ -65,6 +99,20 @@ struct Move
 			}
 		}
 	}
+
+	string PasswordAnimation()
+	{
+		bool ext = false;
+		string password;
+		int password_len = 0;
+
+		while (!ext)
+		{
+			
+			
+		}
+	}
+
 	void hidecursor()
 	{
 		HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -72,6 +120,21 @@ struct Move
 		info.dwSize = 100;
 		info.bVisible = FALSE;
 		SetConsoleCursorInfo(consoleHandle, &info);
+	}
+
+	template<typename T>
+	void SecureEnter(T &temp)
+	{
+		if (cin >> temp)
+		{
+			// Everything is fine!
+		}
+		else
+		{
+			cin.clear();
+			cin.ignore(10000, '\n');
+			throw IncorrectValue();
+		}
 	}
 
 	void operator()(int X, int Y)

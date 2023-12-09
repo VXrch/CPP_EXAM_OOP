@@ -1,7 +1,10 @@
-﻿  People.cpp
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Book.h(182,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\People.cpp(91): warning C4715: 'User::MakeNickname': not all control paths return a value
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\People.cpp(57): warning C4715: 'User::MakeUpPassword': not all control paths return a value
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\People.cpp(418): warning C4715: 'User::Order::GetStatus': not all control paths return a value
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Move.h(67): warning C4715: 'Move::CatchMove': not all control paths return a value
-  Exam.vcxproj -> C:\Users\dev\Desktop\C++_Exam\Exam\x64\Debug\Exam.exe
+﻿  Move.h
+  Source.cpp
+D:\CPP_EXAM\Exam\Exam\Book.h(289,21): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+D:\CPP_EXAM\Exam\Exam\Library.h(35,20): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+D:\CPP_EXAM\Exam\Exam\Source.cpp(191,32): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\CPP_EXAM\Exam\Exam\Source.cpp(310,36): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\CPP_EXAM\Exam\Exam\Source.cpp(310,32): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\CPP_EXAM\Exam\Exam\Source.cpp(745,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+  Создание кода...
+  Exam.vcxproj -> D:\CPP_EXAM\Exam\x64\Debug\Exam.exe

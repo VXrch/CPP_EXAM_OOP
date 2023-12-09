@@ -48,38 +48,6 @@ private:
 	{
 		system("cls"); cout << "This genre is alredy entered!" << endl; system("pause");
 	}
-
-	void MakeLanguage(string language)
-	{
-		if (language == "English")
-		{
-			this->language = English;
-		}
-		else if (language == "Ukrainian")
-		{
-			this->language = Ukrainian;
-		}
-		else if (language == "Italian")
-		{
-			this->language = Italian;
-		}
-		else if (language == "Spanish")
-		{
-			this->language = Spanish;
-		}
-		else if (language == "French")
-		{
-			this->language = French;
-		}
-		else if (language == "German")
-		{
-			this->language = German;
-		}
-		else
-		{
-			this->language = English;
-		}
-	}
 	vector<Genres> MakeGenres(vector<string> genres)
 	{
 		vector<Genres> new_genres;
@@ -157,6 +125,37 @@ private:
 		}
 		return new_genres;
 	}
+	void MakeLanguage(string language)
+	{
+		if (language == "English")
+		{
+			this->language = English;
+		}
+		else if (language == "Ukrainian")
+		{
+			this->language = Ukrainian;
+		}
+		else if (language == "Italian")
+		{
+			this->language = Italian;
+		}
+		else if (language == "Spanish")
+		{
+			this->language = Spanish;
+		}
+		else if (language == "French")
+		{
+			this->language = French;
+		}
+		else if (language == "German")
+		{
+			this->language = German;
+		}
+		else
+		{
+			this->language = English;
+		}
+	}
 	void MakeType(string type)
 	{
 		this->type = Type(type);
@@ -166,6 +165,114 @@ public:
 
 	Book() : title(""), author(""), discription(""), ageRating(0), year(0), price(0), id(0), language(English), genres(), sale(0), type(0) {}
 	bool Fill();
+
+	Type ToType(string type)
+	{
+		Type temp = type;
+		return temp;
+	}
+	Genres ToGenre(string genre)
+	{
+		if (genre == "Fantasy")
+		{
+			return Fantasy;
+		}
+		else if (genre == "ScienceFiction")
+		{
+			return ScienceFiction;
+		}
+		else if (genre == "Dystopian")
+		{
+			return Dystopian;
+		}
+		else if (genre == "Action")
+		{
+			return Action;
+		}
+		else if (genre == "Mystery")
+		{
+			return Mystery;
+		}
+		else if (genre == "Horror")
+		{
+			return Horror;
+		}
+		else if (genre == "Thriller")
+		{
+			return Thriller;
+		}
+		else if (genre == "HistoricalFiction")
+		{
+			return HistoricalFiction;
+		}
+		else if (genre == "Romance")
+		{
+			return Romance;
+		}
+		else if (genre == "ContemporaryFiction")
+		{
+			return ContemporaryFiction;
+		}
+		else if (genre == "MagicalRealism")
+		{
+			return MagicalRealism;
+		}
+		else if (genre == "GraphicNovel")
+		{
+			return GraphicNovel;
+		}
+		else if (genre == "Memoir")
+		{
+			return Memoir;
+		}
+		else if (genre == "Biography")
+		{
+			return Biography;
+		}
+		else if (genre == "Travel")
+		{
+			return Travel;
+		}
+		else if (genre == "TrueCrime")
+		{
+			return TrueCrime;
+		}
+		else if (genre == "Humor")
+		{
+			return Humor;
+		}
+	}
+	Language ToLanguage(string language)
+	{
+		if (language == "English")
+		{
+			return English;
+		}
+		else if (language == "Ukrainian")
+		{
+			return Ukrainian;
+		}
+		else if (language == "Italian")
+		{
+			return Italian;
+		}
+		else if (language == "Spanish")
+		{
+			return Spanish;
+		}
+		else if (language == "French")
+		{
+			return French;
+		}
+		else if (language == "German")
+		{
+			return German;
+		}
+		else
+		{
+			return English;
+		}
+	}
 
 	void Print() const;
 	void PrintMinInfo() const;

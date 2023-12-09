@@ -28,6 +28,40 @@ protected:
 
 public:
 
+	void DeleteBook(Book &book);
+
+	int GetBooksSize() const
+	{
+		return books.size();
+	}
+	bool IsExistId(int id) const
+	{
+		for (int i = 0; i < books.size(); i++)
+		{
+			if (id == books[i].book.GetID())
+			{
+				return true;
+			}
+		}
+		throw IdDoesNotExist();
+	}
+	int GetBookIterator_by_ID(int id) const
+	{
+		for (int i = 0; i < books.size(); i++)
+		{
+			if (id == books[i].book.GetID())
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	void PrintBook(int number) const
+	{
+		books[number].book.Print();
+	}
+
 	void PrintAllBooks() const
 	{
 		for (int i = 0; i < books.size(); i++)
@@ -71,6 +105,7 @@ public:
 	void FindBookBy_price(float min_price, float max_price) const;
 
 	void FindBookBy_id(unsigned int id) const;
+	void FindBookBy_id(int min_id, int max_id) const;
 	void FindBookBy_id(vector<unsigned int> id) const;
 
 	void FindBookBy_Genre(string genre) const;
@@ -78,6 +113,11 @@ public:
 
 	void FindBookBy_language(string language) const;
 	void FindBookBy_language(vector<string> languages) const;
+
+	Book& operator[](int number)
+	{
+		return books[number].book;
+	}
 
 	friend class FilesWork;
 };

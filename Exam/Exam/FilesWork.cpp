@@ -192,7 +192,6 @@ void FilesWork::ReadUsers(vector<User>& users)
 
 	if (inputFile.is_open())
 	{
-
 		string first, second, temp;
 
 		while (!inputFile.eof())
@@ -226,6 +225,7 @@ void FilesWork::ReadUsers(vector<User>& users)
 			// PREFERENCES
 			getline(inputFile, user.preferences.favoriteAuthor);
 			getline(inputFile, user.preferences.favoriteLanguage);
+			getline(inputFile, user.preferences.favoriteGenre);
 
 			getline(inputFile, first);
 			while (first != "+_+_+_+_+_+_+_+_+")
@@ -239,6 +239,13 @@ void FilesWork::ReadUsers(vector<User>& users)
 			{
 				getline(inputFile, second);
 				user.preferences.languages.insert(make_pair(first, stoi(second)));
+			}
+
+			getline(inputFile, first);
+			while (first != "+_+_+_+_+_+_+_+_+")
+			{
+				getline(inputFile, second);
+				user.preferences.genres.insert(make_pair(first, stoi(second)));
 			}
 
 			//ORDERS
@@ -397,6 +404,8 @@ void FilesWork::ReadUsers(vector<User>& users)
 
 				getline(inputFile, temp);
 			}
+
+			users.push_back(user);
 		}
 
 		inputFile.close();
@@ -410,6 +419,11 @@ void FilesWork::ReadUsers(vector<User>& users)
 }
 void FilesWork::WriteUsers(vector<User>& users)
 {
+#ifdef MyDebug
+
+
+#endif
+
 	string filename = "Users.txt";
 	ofstream outputFile(filename);
 
@@ -430,6 +444,7 @@ void FilesWork::WriteUsers(vector<User>& users)
 			// PREFERENCES
 			outputFile << users[i].preferences.favoriteAuthor << endl;
 			outputFile << users[i].preferences.favoriteLanguage << endl;
+			outputFile << users[i].preferences.favoriteGenre << endl;
 
 			for (const auto& entry : users[i].preferences.authors)
 			{
@@ -437,6 +452,11 @@ void FilesWork::WriteUsers(vector<User>& users)
 			}
 			outputFile << "+_+_+_+_+_+_+_+_+" << endl;
 			for (const auto& entry : users[i].preferences.languages)
+			{
+				outputFile << entry.first << endl << entry.second << endl;
+			}
+			outputFile << "+_+_+_+_+_+_+_+_+" << endl;
+			for (const auto& entry : users[i].preferences.genres)
 			{
 				outputFile << entry.first << endl << entry.second << endl;
 			}
