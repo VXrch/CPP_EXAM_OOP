@@ -1,12 +1,2 @@
 ﻿  Move.h
-  Source.cpp
-D:\CPP_EXAM\Exam\Exam\Book.h(289,21): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
-D:\CPP_EXAM\Exam\Exam\Library.h(35,20): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
-D:\CPP_EXAM\Exam\Exam\Source.cpp(195,32): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\CPP_EXAM\Exam\Exam\Source.cpp(316,36): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\CPP_EXAM\Exam\Exam\Source.cpp(316,32): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\CPP_EXAM\Exam\Exam\Source.cpp(758,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
-  Создание кода...
-D:\CPP_EXAM\Exam\Exam\Move.h(100): warning C4715: Move::CatchMove: значение возвращается не при всех путях выполнения
-D:\CPP_EXAM\Exam\Exam\Source.cpp(117): warning C4715: Menu::InRange: значение возвращается не при всех путях выполнения
   Exam.vcxproj -> D:\CPP_EXAM\Exam\x64\Debug\Exam.exe

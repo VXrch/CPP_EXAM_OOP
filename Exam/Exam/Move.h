@@ -38,7 +38,16 @@ public:
 		return os;
 	}
 };
+class EmptyData : public exception
+{
+public:
 
+	friend ostream& operator<<(ostream& os, const EmptyData& obj)
+	{
+		os << "The transferred data is empty!";
+		return os;
+	}
+};
 
 struct Move
 {
@@ -108,6 +117,7 @@ struct Move
 
 		while (key != '\r')
 		{
+			cout << "- - - Enter password - - -" << endl;
 			for (int i = 0; i < password_len; i++)
 			{
 				cout << "*";
@@ -115,17 +125,29 @@ struct Move
 
 			key = _getch();
 
-			password += key;
-			password_len++;
-
-			cout << key;
-			for (int i = 0; i < 16000; i += 1)
+			if (key == '\b')
 			{
-				if (_kbhit())
+				if (!password.empty())
 				{
-					break;
+					password.erase(password.size() - 1);
+					password_len--;
 				}
 			}
+			else
+			{
+				password += key;
+				password_len++;
+
+				cout << key;
+				for (int i = 0; i < 16000; i += 1)
+				{
+					if (_kbhit())
+					{
+						break;
+					}
+				}
+			}
+
 			system("cls");
 		}
 		return password;
@@ -145,7 +167,7 @@ struct Move
 	{
 		if (cin >> temp)
 		{
-			// Everything is fine!
+			return;
 		}
 		else
 		{

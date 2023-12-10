@@ -48,44 +48,65 @@ protected:
 			this->account_status = None;
 		}
 	}
+	Status MakeSttatusFromString(string status)
+	{
+		if (status == "Active")
+		{
+			return Active;
+		}
+		else if (status == "Blocked")
+		{
+			return Blocked;
+		}
+		else
+		{
+			return None;
+		}
+	}
 
 	void Print() const; // basic info
 	virtual void PrintSecretInfo() const; // info to login
 
 	bool isContinue();
+	bool MakeUpPassword();
+	inline void Exist()
+	{
+		cout << "This nickname already exists. Please enter another one!" << endl;
+		system("pause"); system("cls");
+	}
 
 	// Get
-	string GetName() const
+	virtual string GetName() const
 	{
 		return name;
 	}
-	string GetSurname() const
+	virtual string GetSurname() const
 	{
 		return surname;
 	}
-	string GetPhone() const
+	virtual string GetPhone() const
 	{
 		return phone;
 	}
-	string GetNickname() const
+	virtual string GetNickname() const
 	{
 		return nickname;
 	}
-	string GetPassword() const
+	virtual string GetPassword() const
 	{
 		return password;
 	}
 
-	int GetAge() const
+	virtual int GetAge() const
 	{
 		return age;
 	}
-	int GetID() const
+	virtual int GetID() const
 	{
 		return id;
 	}
 
-	string GetStatus() const
+	virtual string GetStatus() const
 	{
 		if (account_status == 0)
 		{
@@ -123,9 +144,10 @@ protected:
 		this->password = password;
 	}
 
-	void SetStatus(Status account_status)
+	void SetStatus(string account_status)
 	{
-		this->account_status = account_status;
+		Status to_make = MakeSttatusFromString(account_status);
+		this->account_status = to_make;
 	}
 
 	void SetAge(int age)
