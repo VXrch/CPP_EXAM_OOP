@@ -33,7 +33,7 @@ class User : public Person
 		}
 		string GetFavGenre() const
 		{
-			return favoriteLanguage;
+			return favoriteGenre;
 		}
 
 		bool isEmpty() const;
@@ -473,6 +473,10 @@ public:
 	string GetNickname() const override
 	{
 		return nickname;
+	}
+	int GetID() const override
+	{
+		return id;
 	}
 
 	bool isEmpty() const

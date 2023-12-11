@@ -36,6 +36,8 @@ class WorkWithPeople
 			i++;
 			move.Gotoxy(3, i); cout << "Id";
 			i++;
+			move.Gotoxy(3, i); cout << "Exit";
+			i++;
 			move.Gotoxy(); cout << "->";
 
 			string go_to = move.CatchMove();
@@ -75,7 +77,7 @@ class WorkWithPeople
 							}
 						}
 					}
-					else
+					else if (move.Y == 3)
 					{
 						cout << "Find by id" << endl;
 
@@ -89,6 +91,10 @@ class WorkWithPeople
 								result.push_back(i);
 							}
 						}
+					}
+					else
+					{
+						ext = true;
 					}
 				}
 				catch (const IncorrectValue& except)
@@ -440,7 +446,7 @@ class Menu
 		bool ext = false;
 		int i = 0, min = 2;
 		Move move;
-		move(0, 0);
+		move(0, 2);
 
 		while (!ext)
 		{
@@ -1034,7 +1040,7 @@ class Menu
 						}
 						else
 						{
-							cout << "Cart is empty!" << endl;
+							cout << "Wishlist is empty!" << endl;
 						}
 					}
 					else if (move.Y == min + 2) // Cart
@@ -1658,6 +1664,27 @@ public:
 	}
 	void FinishProgram()
 	{
+		if (me.status == "user")
+		{
+			for (int i = 0; i < users.size(); i++)
+			{
+				if (me.user->GetID() == users[i].GetID())
+				{
+					users[i] = static_user;
+				}
+			}
+		}
+		else if (me.status == "admin")
+		{
+			for (int i = 0; i < admins.size(); i++)
+			{
+				if (me.admin->GetID() == admins[i].GetID())
+				{
+					admins[i] = static_admin;
+				}
+			}
+		}
+
 		system("cls");
 		fw.WriteToFile(library, admins, users);
 	}
@@ -1675,6 +1702,7 @@ void main()
 	// Order -
 	// Write orders to file -
 	// Incorrect print
+	// Continue working with that - out of range
 
 	Move move;
 	move.hidecursor();

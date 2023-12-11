@@ -837,8 +837,8 @@ void Library::FindBookBy_id(unsigned int id) const
 		if (found == false)
 		{
 			cout << "There are no books that would satisfy the request" << endl;
+			throw IdDoesNotExist();
 		}
-		throw IdDoesNotExist();
 	}
 	catch (const exception&)
 	{

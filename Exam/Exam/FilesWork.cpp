@@ -231,21 +231,33 @@ void FilesWork::ReadUsers(vector<User>& users)
 			while (first != "+_+_+_+_+_+_+_+_+")
 			{
 				getline(inputFile, second);
-				user.preferences.authors.insert(make_pair(first, stoi(second)));
+				if (second != "+_+_+_+_+_+_+_+_+")
+				{
+					user.preferences.authors.insert(make_pair(first, stoi(second)));
+				}
+				getline(inputFile, first);
 			}
 
 			getline(inputFile, first);
 			while (first != "+_+_+_+_+_+_+_+_+")
 			{
 				getline(inputFile, second);
-				user.preferences.languages.insert(make_pair(first, stoi(second)));
+				if (second != "+_+_+_+_+_+_+_+_+")
+				{
+					user.preferences.languages.insert(make_pair(first, stoi(second)));
+				}
+				getline(inputFile, first);
 			}
 
 			getline(inputFile, first);
 			while (first != "+_+_+_+_+_+_+_+_+")
 			{
 				getline(inputFile, second);
-				user.preferences.genres.insert(make_pair(first, stoi(second)));
+				if (second != "+_+_+_+_+_+_+_+_+")
+				{
+					user.preferences.genres.insert(make_pair(first, stoi(second)));
+				}
+				getline(inputFile, first);
 			}
 
 			getline(inputFile, temp);
@@ -318,7 +330,7 @@ void FilesWork::ReadUsers(vector<User>& users)
 			{
 				vector<string> genres;
 
-				getline(inputFile, book.title);
+				book.title = temp;
 				getline(inputFile, book.author);
 				getline(inputFile, book.discription);
 
@@ -360,40 +372,38 @@ void FilesWork::ReadUsers(vector<User>& users)
 			}
 
 			// CART
-			Book book2;
-
 			getline(inputFile, temp);
 			while (temp != "+_+_+_+_+_+_+_+_+")
 			{
 				vector<string> genres;
 
-				getline(inputFile, book2.title);
-				getline(inputFile, book2.author);
-				getline(inputFile, book2.discription);
+				book.title = temp;
+				getline(inputFile, book.author);
+				getline(inputFile, book.discription);
 
 				getline(inputFile, temp);
-				book2.ageRating = stoi(temp);
+				book.ageRating = stoi(temp);
 
 				getline(inputFile, temp);
-				book2.year = stoi(temp);
+				book.year = stoi(temp);
 
 				getline(inputFile, temp);
-				book2.price = stoi(temp);
+				book.price = stoi(temp);
 
 				getline(inputFile, temp);
-				book2.idCounter = stoi(temp);
+				book.idCounter = stoi(temp);
 
 				getline(inputFile, temp);
-				book2.id = stoi(temp);
+				book.id = stoi(temp);
 
 				getline(inputFile, temp);
-				book2.MakeLanguage(temp);
+				book.MakeLanguage(temp);
 
 				getline(inputFile, temp);
-				book2.sale = stoi(temp);
+				book.sale = stoi(temp);
 
 				getline(inputFile, temp);
-				book2.MakeType(temp);
+				book.MakeType(temp);
 
 				getline(inputFile, temp);
 				while (temp != "|-|-|-|-|-|-|-|-|-|-|-|")
@@ -402,8 +412,8 @@ void FilesWork::ReadUsers(vector<User>& users)
 					getline(inputFile, temp);
 				}
 
-				book2.genres = book2.MakeGenres(genres);
-				user.cart.push_back(book2);
+				book.genres = book.MakeGenres(genres);
+				user.cart.push_back(book);
 
 				getline(inputFile, temp);
 			}
@@ -505,7 +515,7 @@ void FilesWork::WriteUsers(vector<User>& users)
 				outputFile << users[i].wishlist[j].sale << endl;
 				outputFile << users[i].wishlist[j].GetType() << endl;
 
-				for (int k = 0; k < users[i].wishlist.size(); k++)
+				for (int k = 0; k < users[i].wishlist[j].genres.size(); k++)
 				{
 					outputFile << users[i].wishlist[j].GetGenre(users[i].wishlist[j].genres[k]) << endl;
 				}
@@ -528,7 +538,7 @@ void FilesWork::WriteUsers(vector<User>& users)
 				outputFile << users[i].cart[j].sale << endl;
 				outputFile << users[i].cart[j].GetType() << endl;
 
-				for (int k = 0; k < users[i].cart.size(); k++)
+				for (int k = 0; k < users[i].cart[j].genres.size(); k++)
 				{
 					outputFile << users[i].cart[j].GetGenre(users[i].cart[j].genres[k]) << endl;
 				}

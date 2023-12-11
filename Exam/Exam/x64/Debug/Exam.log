@@ -1,14 +1,9 @@
-﻿  FilesWork.cpp
-D:\New folder\Exam\Exam\Book.h(374,21): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
-D:\New folder\Exam\Exam\People.h(185,23): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
-D:\New folder\Exam\Exam\People.h(189,21): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
-D:\New folder\Exam\Exam\People.h(193,19): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
-D:\New folder\Exam\Exam\Library.h(35,20): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
-D:\New folder\Exam\Exam\FilesWork.cpp(261,23): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-D:\New folder\Exam\Exam\FilesWork.cpp(283,28): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-D:\New folder\Exam\Exam\FilesWork.cpp(295,27): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-D:\New folder\Exam\Exam\FilesWork.cpp(332,22): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-D:\New folder\Exam\Exam\FilesWork.cpp(344,21): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-D:\New folder\Exam\Exam\FilesWork.cpp(381,23): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-D:\New folder\Exam\Exam\FilesWork.cpp(393,22): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-  Exam.vcxproj -> D:\New folder\Exam\x64\Debug\Exam.exe
+﻿  Person.cpp
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Book.h(374,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\People.h(185,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\People.h(189,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\People.h(193,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Person.cpp(115): warning C4715: 'Person::MakeUpPassword': not all control paths return a value
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Person.cpp(52): warning C4715: 'Person::isContinue': not all control paths return a value
+C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Move.h(110): warning C4715: 'Move::CatchMove': not all control paths return a value
+  Exam.vcxproj -> C:\Users\dev\Desktop\C++_Exam\Exam\x64\Debug\Exam.exe

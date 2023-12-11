@@ -416,15 +416,16 @@ void User::Preferences::NewBook(Book book)
 {
 	this->authors[book.GetAuthor()]++;
 	this->languages[book.GetLanguage()]++;
-	
-	vector<string> string_genre = book.GetAllGenres_string();
-	for (int i = 0; i < string_genre.size(); i++)
+
+	vector<string> genres = book.GetAllGenres_string();
+	for (int i = 0; i < book.GetAllGenres().size(); i++)
 	{
-		this->genres[string_genre[i]]++;
+		this->genres[genres[i]]++;
 	}
 
 	FindFavoriteAuthor();
 	FindFavoriteLanguage();
+	FindFavoriteGenre();
 }
 bool User::Preferences::isEmpty() const
 {
@@ -457,28 +458,32 @@ void User::Preferences::Print() const
 void User::Preferences::FindFavoriteAuthor()
 {
 	int maxValue = 0;
+	string favauthor;
 
 	for (const auto& pair : authors)
 	{
 		if (pair.second > maxValue)
 		{
-			favoriteAuthor = pair.first;
+			favauthor = pair.first;
 			maxValue = pair.second;
 		}
 	}
+	this->favoriteAuthor = favauthor;
 }
 void User::Preferences::FindFavoriteLanguage()
 {
 	int maxValue = 0;
+	string favlanguage;
 
 	for (const auto& pair : languages)
 	{
 		if (pair.second > maxValue)
 		{
-			favoriteLanguage = pair.first;
+			favlanguage = pair.first;
 			maxValue = pair.second;
 		}
-	}
+	}	
+	this->favoriteLanguage = favlanguage;
 }
 void User::Preferences::FindFavoriteGenre()
 {

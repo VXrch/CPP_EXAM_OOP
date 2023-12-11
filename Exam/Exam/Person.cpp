@@ -2,6 +2,7 @@
 
 void Person::Print() const // basic info
 {
+	cout << "ID: " << id << endl;
 	cout << "Name: " << name << endl;
 	cout << "Surname " << surname << endl;
 	cout << "Age: " << age << endl;
@@ -71,16 +72,17 @@ bool Person::MakeUpPassword()
 			{
 				fd_numbers = true;
 			}
-			else if (isupper(symbhol))
+			if (isupper(symbhol))
 			{
 				fd_capital = true;
 			}
-			else if (islower(symbhol))
+			if (islower(symbhol))
 			{
 				fd_small = true;
 			}
 		}
 
+		system("cls");
 		if (password.length() < 8)
 		{
 			cout << "Password length is smaller than 8! Make up a longer one!" << endl << endl;
@@ -102,7 +104,7 @@ bool Person::MakeUpPassword()
 			cout << "The password must have small letters!" << endl << endl;
 		}
 
-		if (fd_numbers == true && fd_small == true && fd_numbers == true && password_len == true)
+		if (fd_numbers == true && fd_small == true && fd_capital == true && password_len == true)
 		{
 			return true;
 		}
