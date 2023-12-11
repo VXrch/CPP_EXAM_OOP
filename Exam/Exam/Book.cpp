@@ -40,6 +40,7 @@ string Book::GetGenre(int number) const
 
 void Book::Print() const
 {
+	cout << "ID: " << id << endl;
 	cout << "Title: " << title << endl;
 	cout << "author: " << author << endl;
 	cout << "discription: " << discription << endl;
@@ -88,6 +89,7 @@ void Book::PrintAllGenres() const
 }
 void Book::PrintShortInfo() const
 {
+	cout << "ID: " << endl;
 	cout << "Title: " << title << endl;
 	cout << "author: " << author << endl;
 	cout << "language: " << language << endl;
@@ -140,7 +142,6 @@ bool Book::Fill()
 {
 	try
 	{
-		cin.ignore();
 		bool ext = false;
 
 		cout << "Book title: "; getline(cin, title);

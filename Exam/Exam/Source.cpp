@@ -760,6 +760,8 @@ class Menu
 			i++;
 			move.Gotoxy(x, i); cout << "Print all users";
 			i++;
+			move.Gotoxy(x, i); cout << "Show all my info";
+			i++;
 			move.Gotoxy(x, i); cout << "Go back";
 			i++;
 			move.Gotoxy(); cout << "->";
@@ -808,6 +810,10 @@ class Menu
 						{
 							users[i].PrintShortInfo();
 						}
+					}
+					else if (move.Y == min + 7) // Show all my info
+					{
+						me.admin->PrintFull();
 					}
 					else
 					{
@@ -1004,6 +1010,8 @@ class Menu
 			i++;
 			move.Gotoxy(x, i); cout << "Recommendations";
 			i++;
+			move.Gotoxy(x, i); cout << "Show all my info";
+			i++;
 			move.Gotoxy(x, i); cout << "Exit";
 			i++;
 			move.Gotoxy(); cout << "->";
@@ -1017,7 +1025,8 @@ class Menu
 				{
 					if (move.Y == min) // My orders
 					{
-						if (me.user->GetOrdersSize() != 0)
+						Menu_Admin();
+						/*if (me.user->GetOrdersSize() != 0)
 						{
 							for (int i = 0; i < me.user->GetOrdersSize(); i++)
 							{
@@ -1026,8 +1035,8 @@ class Menu
 						}
 						else
 						{
-							cout << "Cart is empty!" << endl;
-						}
+							cout << "Orders list is empty!" << endl;
+						}*/
 					}
 					else if (move.Y == min + 1) // Wisheslist
 					{
@@ -1064,6 +1073,10 @@ class Menu
 					else if (move.Y == min + 4) // Recommendations
 					{
 						me.user->GetRecomendations(library.GetBooks());
+					}
+					else if (move.Y == min + 5) // Show all my info
+					{
+						me.user->PrintFull();
 					}
 					else
 					{

@@ -112,6 +112,7 @@ public:
 	User(string name, string surname, int age, string phone, string nickname, string password) : cart(), orders(), preferences(), discount(), wishlist(), Person(name, surname, age, phone, nickname, password) {}
 
 	void Print() const;
+	void PrintFull() const;
 	bool isEmpty() const
 	{
 		if (account_status == None && nickname == "" && password == "")
@@ -468,6 +469,14 @@ public:
 				move.Y == min ? move.Y = i : move.Y--;
 			}
 		}
+	}
+
+	void PrintFull() const
+	{
+		Person::Print();
+		Person::PrintSecretInfo();
+		system("pause");
+		system("cls");
 	}
 
 	string GetNickname() const override

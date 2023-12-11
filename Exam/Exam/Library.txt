@@ -5,7 +5,7 @@ Discription
 18
 2023
 120
-1
+2
 1
 English
 230
@@ -18,12 +18,24 @@ Author
 18
 123
 123
-1
+2
 1
 Spanish
 0
 123Spanish18
-ScienceFiction
-Thriller
-Horror
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+123
+itle of this b ook
+Author name
+
+12
+123
+123
+2
+1
+Ukrainian
+0
+123Ukrainian12
+Action
+Mystery
 -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-

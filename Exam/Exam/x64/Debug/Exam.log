@@ -1,9 +1,2 @@
-﻿  Person.cpp
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Book.h(374,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\People.h(185,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\People.h(189,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\People.h(193,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Person.cpp(115): warning C4715: 'Person::MakeUpPassword': not all control paths return a value
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Person.cpp(52): warning C4715: 'Person::isContinue': not all control paths return a value
-C:\Users\dev\Desktop\C++_Exam\Exam\Exam\Move.h(110): warning C4715: 'Move::CatchMove': not all control paths return a value
+﻿  Move.h
   Exam.vcxproj -> C:\Users\dev\Desktop\C++_Exam\Exam\x64\Debug\Exam.exe

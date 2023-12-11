@@ -163,6 +163,53 @@ void User::Print() const
 	cout << "Orders: " << endl;
 	PrintOrders();
 
+	cout << "Wisheslist: " << endl;
+	PrintWishlist();
+}
+void User::PrintFull() const
+{
+	Person::Print();
+	Person::PrintSecretInfo();
+	cout << endl;
+
+	cout << "Cart:" << endl;
+	PrintCart();
+	cout << endl;
+
+	cout << "Orders: " << endl;
+	PrintOrders();
+	cout << endl;
+
+	cout << "Wisheslist: " << endl;
+	PrintWishlist();
+	cout << endl;
+
+	if (preferences.GetFavAuthor().empty())
+	{
+		cout << "Favorite author: None" << endl;
+	}
+	else
+	{
+		cout << "Favorite author: " << preferences.GetFavAuthor() << endl;
+	}
+	if (preferences.GetFavLanguage().empty())
+	{
+		cout << "Favorite language: None" << endl;
+	}
+	else
+	{
+		cout << "Favorite language: " << preferences.GetFavLanguage() << endl;
+	}
+	if (preferences.GetFavGenre().empty())
+	{
+		cout << "Favorite genre: None" << endl;
+	}
+	else
+	{
+		cout << "Favorite genre: " << preferences.GetFavGenre() << endl;
+	}
+	cout << endl;
+	cout << "-----------------------------------------" << endl;
 }
 void User::PrintCart() const
 {
@@ -180,6 +227,10 @@ void User::PrintCart() const
 }
 void User::PrintWishlist() const
 {
+	if (wishlist.empty())
+	{
+		cout << "Wisheslist is empty!" << endl; return;
+	}
 	for (int i = 0; i < wishlist.size(); i++)
 	{
 		wishlist[i].PrintShortInfo();
