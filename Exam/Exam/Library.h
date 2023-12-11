@@ -54,7 +54,17 @@ public:
 				return i;
 			}
 		}
-		return -1;
+		throw exception();
+	}
+
+	vector<Book> GetBooks() const
+	{
+		vector<Book> vb;
+		for (int i = 0; i < books.size(); i++)
+		{
+			vb.push_back(books[i].book);
+		}
+		return vb;
 	}
 
 	void PrintBook(int number) const

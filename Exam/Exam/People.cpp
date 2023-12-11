@@ -1,12 +1,13 @@
 #include "People.h"
 
-bool User::MakeNickname(const vector<User> all_users)
+bool User::MakeNickname(const vector<User> all_users, const vector<Admin> all_admins)
 {
 	bool ext = false, go = true;
 	while (!ext)
 	{
+		cin.ignore();
 		cout << "To exit press [0]" << endl;
-		cout << "Make up a nickname:  "; cin >> nickname;
+		cout << "Make up a nickname:  "; getline(cin, nickname);
 
 		if (nickname == "0")
 		{
@@ -19,12 +20,24 @@ bool User::MakeNickname(const vector<User> all_users)
 			{
 				if (nickname == all_users[i].GetNickname())
 				{
-					cout << "This nickname already exists. Please enter another one!" << endl;
-					system("pause"); system("cls");
+					Exist();
 					go = false;
 					break;
 				}
 			}
+			if (go == true)
+			{
+				for (int i = 0; i < all_admins.size(); i++)
+				{
+					if (nickname == all_admins[i].GetNickname())
+					{
+						Exist();
+						go = false;
+						break;
+					}
+				}
+			}
+
 			if (go == true)
 			{
 				system("cls");
@@ -35,7 +48,7 @@ bool User::MakeNickname(const vector<User> all_users)
 	}
 }
 
-bool User::Register(const vector<User> all_users)
+bool User::Register(const vector<User> all_users, const vector<Admin> all_admins)
 {
 	try
 	{
@@ -70,7 +83,8 @@ bool User::Register(const vector<User> all_users)
 
 		while (!ext)
 		{
-			bool go = MakeNickname(all_users);
+			bool go;
+			go = MakeNickname(all_users, all_admins);
 
 			if (go == false)
 			{
@@ -122,7 +136,7 @@ bool User::Register(const vector<User> all_users)
 		return false;
 	}
 }
-User User::LogIn(vector<User> users, string nickname, string password)
+User User::LogIn(vector<User>& users, string nickname, string password)
 {
 	for (int i = 0; i < users.size(); i++)
 	{
@@ -220,7 +234,7 @@ void User::PlaceOrder(Book Tbook)
 			}
 		}
 		
-		cout << "Enter the address for delivery: "; cin >> order.address;
+		cout << "Enter the address for delivery: "; getline(cin, order.address);
 		cout << "Total coast will be: " << (order.GetCoast() - discount);
 
 		string password;
@@ -228,7 +242,8 @@ void User::PlaceOrder(Book Tbook)
 		ext = false;
 		while (!ext)
 		{
-			cout << "Enter your account password to confirm your order (or [0] to cansel): "; cin >> password;
+			cout << "Enter your account password to confirm your order!"; system("pause");
+			password = m.PasswordAnimation();
 
 			if (password == "0")
 			{
@@ -425,14 +440,16 @@ void User::Preferences::Print() const
 	if (!authors.empty())
 	{
 		cout << "author:" << endl;
-		for (const auto& author : authors) {
+		for (const auto& author : authors) 
+		{
 			cout << "  " << author.first << ": " << author.second << endl;
 		}
 	}
 	if (!languages.empty())
 	{
 		cout << "Language:" << endl;
-		for (const auto& lang : languages) {
+		for (const auto& lang : languages) 
+		{
 			cout << "  " << lang.first << ": " << lang.second << endl;
 		}
 	}
@@ -484,92 +501,81 @@ void User::Preferences::FindFavoriteGenre()
 void Admin::ChangeBookInfo(Book& book)
 {
 	Move move;
-	move.X = 1;
-	move.Y = 2;
+	move(1, 2);
 
 	int key;
-	bool ext = false;
 
 	string temp_str;
 	float temp_flt;
 	int temp_int;
 
+	int i = 0, min = 1, x = 2;
+
+	bool ext = false;
 	while (ext == false)
 	{
 		system("cls");
 
 		move.Gotoxy(move.X, move.Y);
-		move.Gotoxy(2, 1);  cout << "Change: ";
-		move.Gotoxy(2, 2);  cout << "- Title";
-		move.Gotoxy(2, 3);  cout << "- Author";
-		move.Gotoxy(2, 4);  cout << "- Discription";
-		move.Gotoxy(2, 5);  cout << "- Age rating";
-		move.Gotoxy(2, 6);  cout << "- Year";
-		move.Gotoxy(2, 7);  cout << "- Price";
-		move.Gotoxy(2, 8);  cout << "- Language";
-		move.Gotoxy(2, 9);  cout << "- Genres";
+		move.Gotoxy(x, i);  cout << "---------| Change |---------"; i++;
+		move.Gotoxy(x, i);  cout << "Title"; i++;
+		move.Gotoxy(x, i);  cout << "Author"; i++;
+		move.Gotoxy(x, i);  cout << "Discription"; i++;
+		move.Gotoxy(x, i);  cout << "Age rating"; i++;
+		move.Gotoxy(x, i);  cout << "Year"; i++;
+		move.Gotoxy(x, i);  cout << "Price"; i++;
+		move.Gotoxy(x, i);  cout << "Language"; i++;
+		move.Gotoxy(x, i);  cout << "Genres"; i++;
+		move.Gotoxy(x, i);  cout << "Go back"; i++;
 
-		key = _getch();
-		if (key == 13) // Enter
+		string go_to = move.CatchMove();
+		system("cls");
+
+		if (go_to == "enter")
 		{
 			switch (move.Y)
 			{
-			case 2: // Title 
-				cout << "Enter new title: "; cin >> temp_str;
+			case 1: // Title 
+				cout << "Enter new title: "; getline(cin, temp_str);
 				book.SetTitle(temp_str);
 				break;
-			case 3: // Author
-				cout << "Enter new author: "; cin >> temp_str;
+			case 2: // Author
+				cout << "Enter new author: "; getline(cin, temp_str);
 				book.SetAuthor(temp_str);
 				break;
-			case 4:  // Discription
-				cout << "Enter new description: "; cin >> temp_str;
+			case 3:  // Discription
+				cout << "Enter new description: "; getline(cin, temp_str);
 				book.SetAuthor(temp_str);
 				break;
-			case 5:  // Age rating
+			case 4:  // Age rating
 				cout << "Enter new description: "; cin >> temp_int;
 				book.SetAgeRating(temp_int);
 				break;
-			case 6:  // Year
+			case 5:  // Year
 				cout << "Enter new description: "; cin >> temp_int;
 				book.SetYear(temp_int);
 				break;
-			case 7:  // Price
+			case 6:  // Price
 				cout << "Enter new description: "; cin >> temp_flt;
 				book.SetPrice(temp_flt);
 				break;
-			case 8:  // Language
+			case 7:  // Language
 				book.ChangeLanguage();
 				break;
-			case 9:  // Genres
+			case 8:  // Genres
 				book.ChangeLanguage();
 				break;
+			default: ext = true; break;
 			}
+			system("cls");
 		}
-		else if (key == 87 || key == 119) // [D / d] [up]
+		else if (go_to == "down")
 		{
-			if (move.Y == 1)
-			{
-				move.X = 1;
-				move.Y = 2;
-			}
+			move.Y == i ? move.Y = min : move.Y++;
 		}
-		else if (key == 83 || key == 115) // [S / s] [down]
+		else if (go_to == "up")
 		{
-
-		}
-		else if (key == 224)
-		{
-			key = _getch();
-
-			if (key == 72) // up
-			{
-
-			}
-			else if (key == 80) // down
-			{
-
-			}
+			move.Y == min ? move.Y = i : move.Y--;
 		}
 	}
 }
@@ -594,7 +600,7 @@ bool Admin::MakeNickname(const vector<User> all_users, const vector<Admin> all_a
 	while (!ext)
 	{
 		cout << "To exit press [0]" << endl;
-		cout << "Make up a nickname:  "; cin >> nickname;
+		cout << "Make up a nickname:  "; getline(cin, nickname);
 
 		if (nickname == "0")
 		{
@@ -614,9 +620,9 @@ bool Admin::MakeNickname(const vector<User> all_users, const vector<Admin> all_a
 			}
 			if (go == true)
 			{
-				for (int i = 0; i < all_users.size(); i++)
+				for (int i = 0; i < all_admins.size(); i++)
 				{
-					if (nickname == all_users[i].GetNickname())
+					if (nickname == all_admins[i].GetNickname())
 					{
 						Exist();
 						go = false;
@@ -624,7 +630,7 @@ bool Admin::MakeNickname(const vector<User> all_users, const vector<Admin> all_a
 					}
 				}
 			}
-			
+
 			if (go == true)
 			{
 				system("cls");

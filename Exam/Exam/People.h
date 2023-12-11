@@ -180,21 +180,69 @@ public:
 		return Person::GetID();
 	}
 
-	int GetOrdersSize() const 
-	{
-		return orders.size();
-	}
 	int GetWisheslistSize() const
 	{
 		return wishlist.size();
+	}
+	int GetOrdersSize() const 
+	{
+		return orders.size();
 	}
 	int GetCartSize() const
 	{
 		return cart.size();
 	}
 
+	void GetRecomendations(vector<Book> books)
+	{
+		if (books.empty())
+		{
+			cout << "The catalog is empty." << endl;
+			return;
+		}
+
+		bool find = false;
+
+		vector<Book> print_books;
+		Move m;
+
+		for (int i = 0; i < books.size(); i++)
+		{
+			if (books[i].GetAuthor() == this->GetFavoriteAuthor() || books[i].GetLanguage() == this->GetFavoriteLanguage())
+			{
+				if (books[i].IsUnique(print_books, books[i]))
+					print_books.push_back(books[i]);
+			}
+
+			vector<string> genres = books[i].GetAllGenres_string();
+			for (int i = 0; i < genres.size(); i++)
+			{
+				if (genres[i] == this->GetFavoriteAuthor())
+				{
+					if (books[i].IsUnique(print_books, books[i]))
+						print_books.push_back(books[i]);
+				}
+			}
+		}
+
+		if (find == false)
+		{
+			for (int i = 0; i < books.size(); i++)
+			{
+				books[i].PrintMinInfo();
+			}
+		}
+		else
+		{
+			for (int i = 0; i < print_books.size(); i++)
+			{
+				print_books[i].PrintShortInfo();
+			}
+		}
+	}
+
 	// OTHER
-	bool MakeNickname(const vector<User> all_users);
+	bool MakeNickname(const vector<User> all_users, const vector<Admin> all_admins);
 	void SetDiscount(float discount)
 	{
 		if (discount >= 0)
@@ -207,15 +255,17 @@ public:
 		}
 	}
 
-	bool Register(vector<User> all_users);
-	User LogIn(vector<User> admins, string nickname, string password);
-
-
+	bool Register(const vector<User> all_users, const vector<Admin> all_admins);
+	User LogIn(vector<User>& users, string nickname, string password);
 
 	// PRINT
 	void PrintCart() const;
 	void PrintOrders() const;
 	void PrintWishlist() const;
+	void PrintShortInfo() const
+	{
+		cout << "Name: " << name << " | Surname: " << surname << " | Age: " << age << " | Wishes: " << GetWisheslistSize() << " | Orders: " << GetOrdersSize() << endl;
+	}
 
 	// VECTORS
 	void AddToCart(Book Tbook);
@@ -284,22 +334,22 @@ public:
 				{
 					if (move.Y == 1)
 					{
-						cout << "Enter new name: "; cin >> temp;
+						cout << "Enter new name: "; getline(cin, temp);
 						user.SetName(temp);
 					}
 					else if (move.Y == 2)
 					{
-						cout << "Enter new surname: "; cin >> temp;
+						cout << "Enter new surname: "; getline(cin, temp);
 						user.SetSurname(temp);
 					}
 					else if (move.Y == 3)
 					{
-						cout << "Enter new phone number: "; cin >> temp;
+						cout << "Enter new phone number: "; getline(cin, temp);
 						user.SetPhone(temp);
 					}
 					else if (move.Y == 4)
 					{
-						cout << "Enter new nickname: "; cin >> temp;
+						cout << "Enter new nickname: "; getline(cin, temp);
 						user.SetNickname(temp);
 					}
 					else if (move.Y == 5)
@@ -309,7 +359,7 @@ public:
 					}
 					else if (move.Y == 6)
 					{
-						cout << "Enter new status: "; cin >> temp;
+						cout << "Enter new status: "; getline(cin, temp);
 						user.SetStatus(temp);
 					}
 					else
@@ -344,7 +394,6 @@ public:
 	{
 		Move move;
 
-		cout << "To continue enter password: ";
 		string password = move.PasswordAnimation();
 		
 		if (password == this->password)
@@ -419,6 +468,11 @@ public:
 				move.Y == min ? move.Y = i : move.Y--;
 			}
 		}
+	}
+
+	string GetNickname() const override
+	{
+		return nickname;
 	}
 
 	bool isEmpty() const

@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <type_traits>
 
 using namespace std;
 
@@ -117,6 +118,8 @@ struct Move
 
 		while (key != '\r')
 		{
+			system("cls");
+
 			cout << "- - - Enter password - - -" << endl;
 			for (int i = 0; i < password_len; i++)
 			{
@@ -133,7 +136,7 @@ struct Move
 					password_len--;
 				}
 			}
-			else
+			else if (key != '\r')
 			{
 				password += key;
 				password_len++;
@@ -147,10 +150,50 @@ struct Move
 					}
 				}
 			}
-
-			system("cls");
 		}
 		return password;
+	}
+
+	bool IsUnique(vector<int> search_in, int value) const
+	{
+		for (int i = 0; i < search_in.size(); i++)
+		{
+			if (value == search_in[i])
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	bool IsUnique(vector<float> search_in, float value) const
+	{
+		for (int i = 0; i < search_in.size(); i++)
+		{
+			if (value == search_in[i])
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	bool IsUnique(vector<string> search_in, string value) const
+	{
+		for (int i = 0; i < search_in.size(); i++)
+		{
+			if (value == search_in[i])
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
+	void PrintByCoord(int X, vector<int> Y, char symbhol)
+	{
+		for (int i = 0; i < Y.size(); i++)
+		{
+			Gotoxy(X, Y[i]); cout << symbhol;
+		}
 	}
 
 	void hidecursor()

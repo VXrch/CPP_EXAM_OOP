@@ -103,11 +103,11 @@ class WorkWithPeople
 			}
 			else if (go_to == "down")
 			{
-				move.Y == i ? move.Y = min : move.Y++;
+				move.Y == i - 1? move.Y = min : move.Y++;
 			}
 			else if (go_to == "up")
 			{
-				move.Y == min ? move.Y = i : move.Y--;
+				move.Y == min ? move.Y = i - 1: move.Y--;
 			}
 		}
 		return result;
@@ -176,7 +176,7 @@ class WorkWithPeople
 					if (move.Y == 1)
 					{
 						cout << "Find by Favorite author" << endl;
-						cin >> temp;
+						getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -189,7 +189,7 @@ class WorkWithPeople
 					else if (move.Y == 2)
 					{
 						cout << "Find by Favorite language" << endl;
-						cin >> temp;
+						getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -202,7 +202,7 @@ class WorkWithPeople
 					else if (move.Y == 3)
 					{
 						cout << "Find by Favorite genre" << endl;
-						cin >> temp;
+						getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -215,7 +215,7 @@ class WorkWithPeople
 					else if (move.Y == 4)
 					{
 						cout << "Find by Name" << endl;
-						cin >> temp;
+						getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -228,7 +228,7 @@ class WorkWithPeople
 					else if (move.Y == 5)
 					{
 						cout << "Find by Surname" << endl;
-						cin >> temp;
+						getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -241,7 +241,7 @@ class WorkWithPeople
 					else if (move.Y == 6)
 					{
 						cout << "Find by Phone number" << endl;
-						cin >> temp;
+						getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -254,7 +254,7 @@ class WorkWithPeople
 					else if (move.Y == 7)
 					{
 						cout << "Find by Nickname" << endl;
-						cin >> temp;
+						getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -306,7 +306,7 @@ class WorkWithPeople
 					else if (move.Y == 11)
 					{
 						cout << "Find by Account status" << endl;
-						cin >> temp;
+						getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -333,11 +333,11 @@ class WorkWithPeople
 			}
 			else if (go_to == "down")
 			{
-				move.Y == i ? move.Y = min : move.Y++;
+				move.Y == i - 1? move.Y = min : move.Y++;
 			}
 			else if (go_to == "up")
 			{
-				move.Y == min ? move.Y = i : move.Y--;
+				move.Y == min ? move.Y = i - 1: move.Y--;
 			}
 		}
 	}
@@ -358,14 +358,13 @@ class Menu
 
 		Who_I_Am() : status("none"), user(nullptr), admin(nullptr) {}
 	};
-	
+
 	Who_I_Am me;
 
 	Library library;
 	vector<Admin> admins;
 	vector<User> users;
 	FilesWork fw;
-
 
 	// ADMIN
 	void Admin_WorkWithBook(int iter)
@@ -376,7 +375,7 @@ class Menu
 		}
 
 		bool ext = false;
-		int i = 0, min = 1;
+		int i = 0, min = 2;
 		Move move;
 		move(0, 0);
 
@@ -385,7 +384,8 @@ class Menu
 			system("cls");
 			i = 0;
 
-			move.Gotoxy(2, i); cout << "-*-*-*-*-*-*-*-*-+| Choose what do you want to do nex |+-*-*-*-*-*-*-*-*-";
+			move.Gotoxy(0, 0); cout << "-*-*-*-*-*-*-*-*-+| Choose what do you want to do nex |+-*-*-*-*-*-*-*-*-";
+			i++;
 			i++;
 			move.Gotoxy(2, i); cout << "Change book information";
 			i++;
@@ -393,7 +393,7 @@ class Menu
 			i++;
 			move.Gotoxy(2, i); cout << "Delete this book";
 			i++;
-			move.Gotoxy(2, i); cout << "Come back";
+			move.Gotoxy(2, i); cout << "Go back";
 			i++;
 			move.Gotoxy(); cout << "->";
 
@@ -402,19 +402,19 @@ class Menu
 
 			if (go_to == "enter")
 			{
-				if (move.Y == 1) // Change book information
+				if (move.Y == min) // Change book information
 				{
 					me.admin->ChangeBookInfo(library[iter]);
 				}
-				else if (move.Y == 2) // Add a discount to the book
+				else if (move.Y == min + 1) // Add a discount to the book
 				{
 					me.admin->AddSaleToBook(library[iter]);
 				}
-				else if (move.Y == 3) // Delete this book
+				else if (move.Y == min + 2) // Delete this book
 				{
 					library.DeleteBook(library[iter]);
 				}
-				else // Come back
+				else // Go back
 				{
 					ext = true;
 				}
@@ -422,11 +422,11 @@ class Menu
 			}
 			else if (go_to == "down")
 			{
-				move.Y == i ? move.Y = min : move.Y++;
+				move.Y == i - 1? move.Y = min : move.Y++;
 			}
 			else if (go_to == "up")
 			{
-				move.Y == min ? move.Y = i : move.Y--;
+				move.Y == min ? move.Y = i - 1: move.Y--;
 			}
 		}
 	}
@@ -438,7 +438,7 @@ class Menu
 		}
 
 		bool ext = false;
-		int i = 0, min = 1;
+		int i = 0, min = 2;
 		Move move;
 		move(0, 0);
 
@@ -447,13 +447,14 @@ class Menu
 			system("cls");
 			i = 0;
 
-			move.Gotoxy(2, i); cout << "-*-*-*-*-*-*-*-*-+| Choose what do you want to do next |+-*-*-*-*-*-*-*-*-";
+			move.Gotoxy(0, 0); cout << "-*-*-*-*-*-*-*-*-+| Choose what do you want to do next |+-*-*-*-*-*-*-*-*-";
+			i++;
 			i++;
 			move.Gotoxy(2, i); cout << "Make a discount (before removing the discount manually)";
 			i++;
 			move.Gotoxy(2, i); cout << "Change users status";
 			i++;
-			move.Gotoxy(2, i); cout << "Exit";
+			move.Gotoxy(2, i); cout << "Go back";
 			i++;
 			move.Gotoxy(); cout << "->";
 
@@ -464,7 +465,7 @@ class Menu
 			{
 				try
 				{
-					if (move.Y == 1) // Make a discount
+					if (move.Y == min) // Make a discount
 					{
 						if (me.admin->isValidPassword())
 						{
@@ -480,9 +481,9 @@ class Menu
 							throw PermissionDenied();
 						}
 					}
-					else if (move.Y == 2) // Change users status
+					else if (move.Y == min + 1) // Change users status
 					{
-						
+
 						if (me.admin->isValidPassword())
 						{
 							for (int i = 0; i < results.size(); i++)
@@ -495,7 +496,7 @@ class Menu
 							throw PermissionDenied();
 						}
 					}
-					else // Come back
+					else // Go back
 					{
 						ext = true;
 					}
@@ -516,11 +517,11 @@ class Menu
 			}
 			else if (go_to == "down")
 			{
-				move.Y == i ? move.Y = min : move.Y++;
+				move.Y == i - 1? move.Y = min : move.Y++;
 			}
 			else if (go_to == "up")
 			{
-				move.Y == min ? move.Y = i : move.Y--;
+				move.Y == min ? move.Y = i - 1: move.Y--;
 			}
 		}
 	}
@@ -543,7 +544,7 @@ class Menu
 			system("cls");
 			i = 0;
 
-			move.Gotoxy(2, i); cout << "-*-*-*-*-*-*-*| Add a discount on books in the range by|*-*-*-*-*-*-*-";
+			move.Gotoxy(0, i); cout << "-*-*-*-*-*-*-*| Add a discount on books in the range by|*-*-*-*-*-*-*-";
 			i++;
 			move.Gotoxy(2, i); cout << "Age rating";
 			i++;
@@ -552,6 +553,8 @@ class Menu
 			move.Gotoxy(2, i); cout << "Number of copies";
 			i++;
 			move.Gotoxy(2, i); cout << "Price";
+			i++;
+			move.Gotoxy(2, i); cout << "Go back";
 			i++;
 			move.Gotoxy(); cout << "->";
 
@@ -637,7 +640,7 @@ class Menu
 							}
 						}
 					}
-					else // Price
+					else if (move.Y == 3) // Price
 					{
 						cout << "Find by price" << endl;
 
@@ -662,6 +665,10 @@ class Menu
 							}
 						}
 					}
+					else
+					{
+						ext = true;
+					}
 				}
 				catch (const IncorrectValue& except)
 				{
@@ -675,11 +682,11 @@ class Menu
 			}
 			else if (go_to == "down")
 			{
-				move.Y == i ? move.Y = min : move.Y++;
+				move.Y == i - 1? move.Y = min : move.Y++;
 			}
 			else if (go_to == "up")
 			{
-				move.Y == min ? move.Y = i : move.Y--;
+				move.Y == min ? move.Y = i - 1: move.Y--;
 			}
 		}
 	}
@@ -688,15 +695,16 @@ class Menu
 		try
 		{
 			system("cls");
+
 			Move move;
+			int id_of_this_book;
 
-			int id_to_search;
 			cout << "Enter book id: ";
-			move.SecureEnter(id_to_search);
+			move.SecureEnter(id_of_this_book);
 
-			library.FindBookBy_NumberOfBooks(id_to_search);
+			int iter = ChooseBook(id_of_this_book);
 
-			Admin_WorkWithBook(id_to_search);
+			Admin_WorkWithBook(iter);
 		}
 		catch (const IncorrectValue& except)
 		{
@@ -714,32 +722,39 @@ class Menu
 			sc();
 		}
 	}
-	void Menu_Admin()
+	string Menu_Admin()
 	{
 		if (me.status != "admin")
 			throw PermissionDenied();
 
-		bool ext = false;
-		int i = 0; int min = 1;
+		int i = 0; int min = 1, x = 3;
+
 		Move move;
 		move(0, min);
 
+		bool ext = false;
 		while (!ext)
 		{
 			system("cls");
 			i = 0;
 
-			move.Gotoxy(2, i); cout << "-*-*-*-*-*-*-*| Admin menu |*-*-*-*-*-*-*-";
+			move.Gotoxy(0, 0); cout << "-*-*-*-*-*-*-*| Admin menu |*-*-*-*-*-*-*-";
 			i++;
-			move.Gotoxy(2, i); cout << "Register a new administrator account";
+			move.Gotoxy(x, i); cout << "Register a new administrator account";
 			i++;
-			move.Gotoxy(2, i); cout << "Add a book to the library";
+			move.Gotoxy(x, i); cout << "Add a book to the library";
 			i++;
-			move.Gotoxy(2, i); cout << "Add a discount to the books";
+			move.Gotoxy(x, i); cout << "Add a discount to the books";
 			i++;
-			move.Gotoxy(2, i); cout << "Find book";
+			move.Gotoxy(x, i); cout << "Find book";
 			i++;
-			move.Gotoxy(2, i); cout << "Find user";
+			move.Gotoxy(x, i); cout << "Find user";
+			i++;
+			move.Gotoxy(x, i); cout << "Print all books";
+			i++;
+			move.Gotoxy(x, i); cout << "Print all users";
+			i++;
+			move.Gotoxy(x, i); cout << "Go back";
 			i++;
 			move.Gotoxy(); cout << "->";
 
@@ -750,29 +765,48 @@ class Menu
 			{
 				try
 				{
-					if (move.Y == 1) // Register a new administrator account
+					if (move.Y == min) // Register a new administrator account
 					{
 						Admin admin;
 						admin.Register(users, admins);
 					}
-					else if (move.Y == 2) // Add a book to the library
+					else if (move.Y == min + 1) // Add a book to the library
 					{
 						library.AddNewBook();
 					}
-					else if (move.Y == 3) // Add a discount to the books
+					else if (move.Y == min + 2) // Add a discount to the books
 					{
 						if (InRange())
 						{
 							AddDiscount_inRange();
 						}
 					}
-					else if (move.Y == 4) // Find book
+					else if (move.Y == min + 3) // Find book
 					{
 						FindBook();
 					}
-					else // Find user
+					else if (move.Y == min + 4) // Find user
 					{
 						FindUser();
+					}
+					else if (move.Y == min + 5) // Print all books
+					{
+						for (int i = 0; i < library.GetBooksSize(); i++)
+						{
+							library[i].PrintShortInfo();
+						}
+					}
+					else if (move.Y == min + 6) // Print all users
+					{
+						for (int i = 0; i < users.size(); i++)
+						{
+							users[i].PrintShortInfo();
+						}
+					}
+					else
+					{
+						if (ExitFromAccount())
+							return "exit";
 					}
 				}
 				catch (const PermissionDenied& except)
@@ -787,13 +821,14 @@ class Menu
 			}
 			else if (go_to == "down")
 			{
-				move.Y == i ? move.Y = min : move.Y++;
+				move.Y == i - 1? move.Y = min - 1 : move.Y++;
 			}
 			else if (go_to == "up")
 			{
-				move.Y == min ? move.Y = i : move.Y--;
+				move.Y == min - 1 ? move.Y = i - 1: move.Y--;
 			}
 		}
+		return "go";
 	}
 	void FindUser()
 	{
@@ -806,11 +841,11 @@ class Menu
 
 			WorkWithPeople wwp;
 
-
 			if (InRange("user"))
 			{
-				vector<int> result_of_find = wwp.FindUserInRange(users);
-				
+				vector<int> result_of_find;
+				result_of_find = wwp.FindUserInRange(users);
+
 				if (Continue())
 				{
 					Admin_WorkWithUser_inRange(result_of_find);
@@ -830,59 +865,13 @@ class Menu
 		{
 			cout << except << endl;
 		}
+		catch (const EmptyData& except)
+		{
+			cout << except << endl;
+		}
 		catch (...)
 		{
 			cout << "An unexpected error!" << endl;
-		}
-	}
-	void FindBook()
-	{
-		system("cls");
-		FindBookMenu();
-
-		Move move;
-		int i = 0, min = 0;
-		move(0, min);
-
-		bool ext = false;
-		while (ext == false)
-		{
-			i = 0;
-
-			move.Gotoxy(1, i); cout << "Come back";
-			i++;
-			move.Gotoxy(1, i); cout << "Select a book";
-			i++;
-			move.Gotoxy(); cout << ">";
-
-			string go_to = move.CatchMove();
-
-			if (go_to == "enter")
-			{
-				if (move.Y == 0)
-				{
-					ext = true;
-				}
-				else
-				{
-					if (me.status == "admin")
-					{
-						Admin_SelectBook();
-					}
-					else
-					{
-						User_SelectBook();
-					}
-				}
-			}
-			else if (go_to == "down")
-			{
-				move.Y == i ? move.Y = min : move.Y++;
-			}
-			else if (go_to == "up")
-			{
-				move.Y == min ? move.Y = i : move.Y--;
-			}
 		}
 	}
 
@@ -907,7 +896,7 @@ class Menu
 			i++;
 			move.Gotoxy(2, i); cout << "Place an order";
 			i++;
-			move.Gotoxy(2, i); cout << "Come back";
+			move.Gotoxy(2, i); cout << "Go back";
 			i++;
 			move.Gotoxy(); cout << "->";
 
@@ -947,11 +936,11 @@ class Menu
 			}
 			else if (go_to == "down")
 			{
-				move.Y == i ? move.Y = min : move.Y++;
+				move.Y == i - 1? move.Y = min : move.Y++;
 			}
 			else if (go_to == "up")
 			{
-				move.Y == min ? move.Y = i : move.Y--;
+				move.Y == min ? move.Y = i - 1: move.Y--;
 			}
 		}
 	}
@@ -965,10 +954,9 @@ class Menu
 			int id_of_this_book;
 			cout << "Enter book id: ";
 			move.SecureEnter(id_of_this_book);
+			int iter = ChooseBook(id_of_this_book);
 
-			library.IsExistId(id_of_this_book);
-
-			User_WorkWithBook(id_of_this_book);
+			User_WorkWithBook(iter);
 		}
 		catch (const IncorrectValue& except)
 		{
@@ -986,9 +974,117 @@ class Menu
 			sc();
 		}
 	}
-	void Menu_User()
+	string Menu_User()
 	{
+		bool ext = false;
+		int i = 0, min = 1, x = 2;
+		Move move;
+		move(0, min);
 
+		while (!ext)
+		{
+			system("cls");
+			i = 0;
+
+			move.Gotoxy(0, i); cout << "-*-*-*-*-*-*-*| Menu |*-*-*-*-*-*-*-";
+			i++;
+			move.Gotoxy(x, i); cout << "My orders";
+			i++;
+			move.Gotoxy(x, i); cout << "Wisheslist";
+			i++;
+			move.Gotoxy(x, i); cout << "Cart";
+			i++;
+			move.Gotoxy(x, i); cout << "Find book";
+			i++;
+			move.Gotoxy(x, i); cout << "Recommendations";
+			i++;
+			move.Gotoxy(x, i); cout << "Exit";
+			i++;
+			move.Gotoxy(); cout << "->";
+
+			string go_to = move.CatchMove();
+			system("cls");
+
+			if (go_to == "enter")
+			{
+				try
+				{
+					if (move.Y == min) // My orders
+					{
+						if (me.user->GetOrdersSize() != 0)
+						{
+							for (int i = 0; i < me.user->GetOrdersSize(); i++)
+							{
+								me.user->PrintOrders();
+							}
+						}
+						else
+						{
+							cout << "Cart is empty!" << endl;
+						}
+					}
+					else if (move.Y == min + 1) // Wisheslist
+					{
+						if (me.user->GetWisheslistSize() != 0)
+						{
+							for (int i = 0; i < me.user->GetWisheslistSize(); i++)
+							{
+								me.user->PrintWishlist();
+							}
+						}
+						else
+						{
+							cout << "Cart is empty!" << endl;
+						}
+					}
+					else if (move.Y == min + 2) // Cart
+					{
+						if (me.user->GetCartSize() != 0)
+						{
+							for (int i = 0; i < me.user->GetCartSize(); i++)
+							{
+								me.user->PrintCart();
+							}
+						}
+						else
+						{
+							cout << "Cart is empty!" << endl;
+						}
+					}
+					else if (move.Y == min + 3) // Find book
+					{
+						FindBook();
+					}
+					else if (move.Y == min + 4) // Recommendations
+					{
+						me.user->GetRecomendations(library.GetBooks());
+					}
+					else
+					{
+						if (ExitFromAccount())
+							return "exit";
+					}
+				}
+				catch (const PermissionDenied& except)
+				{
+					cout << except << endl;
+				}
+				catch (const exception& except)
+				{
+					cout << "Unknown error!" << endl;
+				}
+				sc();
+			}
+			else if (go_to == "down")
+			{
+				move.Y == i - 1? move.Y = min : move.Y++;
+			}
+			else if (go_to == "up")
+			{
+				move.Y == min ? move.Y = i - 1: move.Y--;
+			}
+		}
+		return "go";
 	}
 
 	// FOR ALL
@@ -999,8 +1095,8 @@ class Menu
 		bool is_found = false;
 		string nickname, password;
 
-		cout << "Enter your nickname: "; cin >> nickname;
-		cout << "Enter your password: "; password = move.PasswordAnimation();
+		cout << "Enter your nickname: "; getline(cin, nickname);
+		password = move.PasswordAnimation();
 
 		if (!admins.empty())
 		{
@@ -1026,12 +1122,10 @@ class Menu
 			}
 		}
 
-		if (is_found == false)
-		{
-			cout << "Incorrect data!" << endl; 
-			sc();
-		}
-		
+		system("cls");
+		cout << "Incorrect data!" << endl;
+		sc();
+
 		return "false";
 	}
 
@@ -1069,11 +1163,55 @@ class Menu
 			}
 			else if (go_to == "down")
 			{
-				move.Y == i ? move.Y = min : move.Y++;
+				move.Y == i - 1? move.Y = min : move.Y++;
 			}
 			else if (go_to == "up")
 			{
-				move.Y == min ? move.Y = i : move.Y--;
+				move.Y == min ? move.Y = i - 1: move.Y--;
+			}
+		}
+	}
+	bool ExitFromAccount()
+	{
+		bool ext = false;
+		int i = 0, min = 1, x = 2;
+		Move move;
+		move(0, min);
+
+		while (!ext)
+		{
+			system("cls");
+			i = 0;
+
+			move.Gotoxy(x, i); cout << "Are you sure you want to log out of the account?";
+			i++;
+			move.Gotoxy(x, i); cout << "Yes";
+			i++;
+			move.Gotoxy(x, i); cout << "No";
+			i++;
+			move.Gotoxy(); cout << "->";
+
+			string go_to = move.CatchMove();
+			system("cls");
+
+			if (go_to == "enter")
+			{
+				if (move.Y == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else if (go_to == "down")
+			{
+				move.Y == i - 1? move.Y = min : move.Y++;
+			}
+			else if (go_to == "up")
+			{
+				move.Y == min ? move.Y = i - 1: move.Y--;
 			}
 		}
 	}
@@ -1091,7 +1229,7 @@ class Menu
 
 			move.Gotoxy(2, i); cout << "Continue to work with that";
 			i++;
-			move.Gotoxy(2, i); cout << "Come back";
+			move.Gotoxy(2, i); cout << "Go back";
 			i++;
 			move.Gotoxy(); cout << "->";
 
@@ -1111,15 +1249,67 @@ class Menu
 			}
 			else if (go_to == "down")
 			{
-				move.Y == i ? move.Y = min : move.Y++;
+				move.Y == i - 1? move.Y = min : move.Y++;
 			}
 			else if (go_to == "up")
 			{
-				move.Y == min ? move.Y = i : move.Y--;
+				move.Y == min ? move.Y = i - 1: move.Y--;
 			}
 		}
 	}
 	
+	void FindBook()
+	{
+		system("cls");
+		FindBookMenu();
+
+		Move move;
+		int i = 0, min = 0, x = 2;
+		move(0, min);
+
+		bool ext = false;
+		while (ext == false)
+		{
+			i = 0;
+			system("cls");
+
+			move.Gotoxy(x, i); cout << "Go back";
+			i++;
+			move.Gotoxy(x, i); cout << "Select a book";
+			i++;
+			move.Gotoxy(); cout << ">";
+
+			string go_to = move.CatchMove();
+			system("cls");
+
+			if (go_to == "enter")
+			{
+				if (move.Y == 0)
+				{
+					ext = true;
+				}
+				else
+				{
+					if (me.status == "admin")
+					{
+						Admin_SelectBook();
+					}
+					else
+					{
+						User_SelectBook();
+					}
+				}
+			}
+			else if (go_to == "down")
+			{
+				move.Y == i - 1? move.Y = min : move.Y++;
+			}
+			else if (go_to == "up")
+			{
+				move.Y == min ? move.Y = i - 1: move.Y--;
+			}
+		}
+	}
 	void FindBookBy() const
 	{
 		bool ext = false;
@@ -1147,6 +1337,7 @@ class Menu
 			move.Gotoxy(3, i); cout << "Id"; i++;
 			move.Gotoxy(3, i); cout << "Genre"; i++;
 			move.Gotoxy(3, i); cout << "Language"; i++;
+			move.Gotoxy(3, i); cout << "Go back"; i++;
 			move.Gotoxy(); cout << "->";
 
 			string go_to = move.CatchMove();
@@ -1164,17 +1355,17 @@ class Menu
 					}
 					else if (move.Y == 2)
 					{
-						cout << "Enter type to search: "; cin >> temp;
+						cout << "Enter type to search: "; getline(cin, temp);
 						library.FindBookBy_type(temp);
 					}
 					else if (move.Y == 3)
 					{
-						cout << "Enter title to search: "; cin >> temp;
+						cout << "Enter title to search: "; getline(cin, temp);
 						library.FindBookBy_title(temp);
 					}
 					else if (move.Y == 4)
 					{
-						cout << "Enter author to search: "; cin >> temp;
+						cout << "Enter author to search: "; getline(cin, temp);
 						library.FindBookBy_author(temp);
 					}
 					else if (move.Y == 5)
@@ -1206,13 +1397,17 @@ class Menu
 					}
 					else if (move.Y == 9)
 					{
-						cout << "Enter genre to search: "; cin >> temp;
+						cout << "Enter genre to search: "; getline(cin, temp);
 						library.FindBookBy_Genre(temp);
+					}
+					else if (move.Y == 10)
+					{
+						cout << "Enter language to search: "; getline(cin, temp);
+						library.FindBookBy_language(temp);
 					}
 					else
 					{
-						cout << "Enter language to search: "; cin >> temp;
-						library.FindBookBy_language(temp);
+						ext = true;
 					}
 				}
 				catch (const IncorrectValue& except)
@@ -1231,11 +1426,11 @@ class Menu
 			}
 			else if (go_to == "down")
 			{
-				move.Y == i ? move.Y = min : move.Y++;
+				move.Y == i - 1? move.Y = min : move.Y++;
 			}
 			else if (go_to == "up")
 			{
-				move.Y == min ? move.Y = i : move.Y--;
+				move.Y == min ? move.Y = i - 1: move.Y--;
 			}
 		}
 	}
@@ -1265,6 +1460,8 @@ class Menu
 			move.Gotoxy(3, i); cout << "Price";
 			i++;
 			move.Gotoxy(3, i); cout << "Id";
+			i++;
+			move.Gotoxy(3, i); cout << "Go back";
 			i++;
 			move.Gotoxy(); cout << "->";
 
@@ -1312,7 +1509,7 @@ class Menu
 
 						library.FindBookBy_price(fr1, fr2);
 					}
-					else
+					else if (move.Y == 5)
 					{
 						cout << "Find by id" << endl;
 
@@ -1320,6 +1517,10 @@ class Menu
 						cout << "Max range: ";  move.SecureEnter(r2);
 
 						library.FindBookBy_id(r1, r2);
+					}
+					else
+					{
+						ext = true;
 					}
 				}
 				catch (const IncorrectValue& except)
@@ -1334,11 +1535,11 @@ class Menu
 			}
 			else if (go_to == "down")
 			{
-				move.Y == i ? move.Y = min : move.Y++;
+				move.Y == i - 1? move.Y = min : move.Y++;
 			}
 			else if (go_to == "up")
 			{
-				move.Y == min ? move.Y = i : move.Y--;
+				move.Y == min ? move.Y = i - 1: move.Y--;
 			}
 		}
 	}
@@ -1371,7 +1572,6 @@ class Menu
 		}
 	}
 
-
 public:
 
 	inline void sc() const
@@ -1383,7 +1583,7 @@ public:
 	{
 		User user;
 		fw.ReadFromFile(library, admins, users);
-		int i = 0, min = 1;
+		int i = 0, min = 1, x = 4;
 		Move move;
 		move(0, min);
 
@@ -1393,13 +1593,13 @@ public:
 			system("cls");
 			i = 0;
 
-			move.Gotoxy(1, i); cout << "+-+-+-+-+-| Welcome to book shop! | -+-+-+-+-+" << endl; 
+			move.Gotoxy(0, i); cout << "---+-+-+-+-+-| Welcome to book shop! | -+-+-+-+-+---" << endl; 
 			i++;
-			move.Gotoxy(4, i); cout << "Log in";
+			move.Gotoxy(x, i); cout << "Log in";
 			i++;
-			move.Gotoxy(4, i); cout << "Register";
+			move.Gotoxy(x, i); cout << "Register";
 			i++;
-			move.Gotoxy(4, i); cout << "Exit";
+			move.Gotoxy(x, i); cout << "Exit";
 			i++;
 			move.Gotoxy(); cout << "-->";
 
@@ -1417,11 +1617,11 @@ public:
 
 						if (result == "admin")
 						{
-							Menu_Admin();
+							return Menu_Admin();
 						}
 						else if (result == "user")
 						{
-							Menu_User();
+							return Menu_User();
 						}
 					}
 					else
@@ -1431,14 +1631,14 @@ public:
 				}
 				else if (move.Y == 2)
 				{
-					if (user.Register(users))
+					if (user.Register(users, admins))
 					{
 						static_user = user;
 						me.user = &static_user;
 						me.status = "user";
 
 						users.push_back(user);
-						Menu_User();
+						return Menu_User();
 					}
 				}
 				else
@@ -1472,7 +1672,9 @@ User Menu::static_user;
 
 void main()
 {
-	// Рекомендации (по preferences) for users
+	// Order -
+	// Write orders to file -
+	// Incorrect print
 
 	Move move;
 	move.hidecursor();

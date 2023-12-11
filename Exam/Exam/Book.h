@@ -18,7 +18,7 @@ protected:
 
 		void SetType(int year, string language, int ageRating)
 		{
-			type = to_string(year), language, ageRating;
+			type = to_string(year) + language + to_string(ageRating);
 		}
 	};
 	
@@ -40,13 +40,82 @@ protected:
 
 private:
 
-	inline void Successed() const
+	vector<Genres> MakeGenres(vector<int> genres)
 	{
-		system("cls"); cout << "Successed!" << endl; system("pause");
-	}
-	inline void Fail() const
-	{
-		system("cls"); cout << "This genre is alredy entered!" << endl; system("pause");
+		vector<Genres> new_genres;
+
+		for (int i = 0; i < genres.size(); i++)
+		{
+			if (genres[i] == 0)
+			{
+				new_genres.push_back(Fantasy);
+			}
+			else if (genres[i] == 1)
+			{
+				new_genres.push_back(ScienceFiction);
+			}
+			else if (genres[i] == 2)
+			{
+				new_genres.push_back(Dystopian);
+			}
+			else if (genres[i] == 3)
+			{
+				new_genres.push_back(Action);
+			}
+			else if (genres[i] == 4)
+			{
+				new_genres.push_back(Mystery);
+			}
+			else if (genres[i] == 5)
+			{
+				new_genres.push_back(Horror);
+			}
+			else if (genres[i] == 6)
+			{
+				new_genres.push_back(Thriller);
+			}
+			else if (genres[i] == 7)
+			{
+				new_genres.push_back(HistoricalFiction);
+			}
+			else if (genres[i] == 8)
+			{
+				new_genres.push_back(Romance);
+			}
+			else if (genres[i] == 9)
+			{
+				new_genres.push_back(ContemporaryFiction);
+			}
+			else if (genres[i] == 10)
+			{
+				new_genres.push_back(MagicalRealism);
+			}
+			else if (genres[i] == 11)
+			{
+				new_genres.push_back(GraphicNovel);
+			}
+			else if (genres[i] == 12)
+			{
+				new_genres.push_back(Memoir);
+			}
+			else if (genres[i] == 13)
+			{
+				new_genres.push_back(Biography);
+			}
+			else if (genres[i] == 14)
+			{
+				new_genres.push_back(Travel);
+			}
+			else if (genres[i] == 15)
+			{
+				new_genres.push_back(TrueCrime);
+			}
+			else if (genres[i] == 16)
+			{
+				new_genres.push_back(Humor);
+			}
+		}
+		return new_genres;
 	}
 	vector<Genres> MakeGenres(vector<string> genres)
 	{
@@ -274,6 +343,22 @@ public:
 		}
 	}
 
+	template <typename T>
+	void DeleteValue(vector<T>& delete_from, T value_to_delete)
+	{
+		for (auto it = delete_from.begin(); it != delete_from.end(); ) 
+		{
+			if (*it == value_to_delete) 
+			{
+				it = delete_from.erase(it);
+			}
+			else 
+			{
+				++it;
+			}
+		}
+	}
+
 	void Print() const;
 	void PrintMinInfo() const;
 	void PrintShortInfo() const;
@@ -320,6 +405,18 @@ public:
 			}
 		}
 		return string_genres;
+	}
+
+	bool IsUnique(vector<Book> search_in, Book value) const
+	{
+		for (int i = 0; i < search_in.size(); i++)
+		{
+			if (value == search_in[i])
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 
 	int GetYear() const
@@ -396,18 +493,6 @@ protected:
 		this->language = language;
 	}
 
-	bool IsUnique(Genres genre) const
-	{
-		for (int i = 0; i < genres.size(); i++)
-		{
-			if (genre == genres[i])
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-
 	void ChangeLanguage()
 	{
 		Move move(2, 2);
@@ -449,6 +534,15 @@ protected:
 				move.Y == 7 ? move.Y = 2 : move.Y--;
 			}
 		}
+	}
+
+	bool operator==(Book temp)
+	{
+		if (this->author == temp.author && this->title == temp.title && this->id == temp.id && this->discription == temp.discription && this->sale == temp.sale && this->price == temp.price)
+		{
+			return true;
+		}
+		return false;
 	}
 
 	friend class Admin;

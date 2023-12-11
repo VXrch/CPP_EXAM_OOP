@@ -32,7 +32,7 @@ void FilesWork::ReadLibrary(Library& library)
 			book.year = stoi(temp);
 
 			getline(inputFile, temp);
-			book.price = stoi(temp);
+			book.price = stof(temp);
 
 			getline(inputFile, temp);
 			book.idCounter = stoi(temp);
@@ -44,7 +44,7 @@ void FilesWork::ReadLibrary(Library& library)
 			book.MakeLanguage(temp);
 
 			getline(inputFile, temp);
-			book.sale = stoi(temp);
+			book.sale = stof(temp);
 
 			getline(inputFile, temp);
 			book.MakeType(temp);
@@ -73,7 +73,7 @@ void FilesWork::ReadLibrary(Library& library)
 void FilesWork::WriteLibrary(Library& library)
 {
 	string filename = "Library.txt";
-	ofstream outputFile(filename);
+	ofstream outputFile(filename, ios::out | ios::trunc);
 
 	if (outputFile.is_open())
 	{
@@ -159,7 +159,7 @@ void FilesWork::ReadAdmins(vector<Admin>& admins)
 void FilesWork::WriteAdmins(vector<Admin>& admins)
 {
 	string filename = "Admin.txt";
-	ofstream outputFile(filename);
+	ofstream outputFile(filename, ios::out | ios::trunc);
 
 	if (outputFile.is_open())
 	{
@@ -247,6 +247,9 @@ void FilesWork::ReadUsers(vector<User>& users)
 				getline(inputFile, second);
 				user.preferences.genres.insert(make_pair(first, stoi(second)));
 			}
+
+			getline(inputFile, temp);
+			user.discount = stof(temp);
 
 			//ORDERS
 			getline(inputFile, temp);
@@ -419,13 +422,8 @@ void FilesWork::ReadUsers(vector<User>& users)
 }
 void FilesWork::WriteUsers(vector<User>& users)
 {
-#ifdef MyDebug
-
-
-#endif
-
 	string filename = "Users.txt";
-	ofstream outputFile(filename);
+	ofstream outputFile(filename, ios::out | ios::trunc);
 
 	if (outputFile.is_open())
 	{
@@ -461,6 +459,8 @@ void FilesWork::WriteUsers(vector<User>& users)
 				outputFile << entry.first << endl << entry.second << endl;
 			}
 			outputFile << "+_+_+_+_+_+_+_+_+" << endl;
+
+			outputFile << users[i].discount << endl;
 
 			//ORDERS
 			for (int j = 0; j < users[i].orders.size(); j++)
