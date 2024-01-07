@@ -8,20 +8,6 @@ protected:
 	enum Language { English, Ukrainian, Italian, Spanish, French, German };
 	enum Genres { Fantasy, ScienceFiction, Dystopian, Action, Mystery, Horror, Thriller, HistoricalFiction, Romance, ContemporaryFiction, MagicalRealism, GraphicNovel, Memoir, Biography, Travel, TrueCrime, Humor };
 
-	struct Type
-	{
-		string type;
-
-		Type() : type("") {}
-		Type(int number) : type("0") {}
-		Type(string type) : type(type) {}
-
-		void SetType(int year, string language, int ageRating)
-		{
-			type = to_string(year) + language + to_string(ageRating);
-		}
-	};
-	
 	string title;
 	string author;
 	string discription;
@@ -36,7 +22,6 @@ protected:
 	vector<Genres> genres;
 
 	float sale;
-	Type type;
 
 private:
 
@@ -225,21 +210,12 @@ private:
 			this->language = English;
 		}
 	}
-	void MakeType(string type)
-	{
-		this->type = Type(type);
-	}
 
 public:
 
-	Book() : title(""), author(""), discription(""), ageRating(0), year(0), price(0), id(0), language(English), genres(), sale(0), type(0) {}
+	Book() : title(""), author(""), discription(""), ageRating(0), year(0), price(0), id(0), language(English), genres(), sale(0) {}
 	bool Fill();
 
-	Type ToType(string type)
-	{
-		Type temp = type;
-		return temp;
-	}
 	Genres ToGenre(string genre)
 	{
 		if (genre == "Fantasy")
@@ -363,9 +339,8 @@ public:
 	void PrintMinInfo() const;
 	void PrintShortInfo() const;
 	void PrintAllGenres() const;
-	void PrintAllLanguages() const;
 	void PrintAllGenres(int X, int Y) const;
-	void PrintAllLanguages(int X, int Y) const;
+	void PrintAndSetLanguage(string title_to_set);
 
 	string GetLanguage() const;
 	string GetGenre(int number) const;
@@ -426,10 +401,6 @@ public:
 	float GetSale() const
 	{
 		return sale;
-	}
-	string GetType() const
-	{
-		return type.type;
 	}
 	float GetPrice() const
 	{
@@ -498,40 +469,58 @@ protected:
 		Move move(2, 2);
 		bool ext = false;
 
+		int i = 0, min = 1;
+
 		while (!ext)
 		{
-			move.Gotoxy(2, 1); cout << "Choose new language: ";
+			system("cls");
+			i = 0;
 
-			PrintAllLanguages(move.X, move.Y);
-			move.Gotoxy(1, move.Y); cout << ">";
-			string user_move = move.CatchMove();
+			move.Gotoxy(0, i); cout << "-*-*-*-*-*-*-*-*-+| Set new language |+-*-*-*-*-*-*-*-*-";
+			i++;
+			move.Gotoxy(2, i); cout << "[English] ";
+			i++;
+			move.Gotoxy(2, i); cout << "[Ukrainiah] ";
+			i++;
+			move.Gotoxy(2, i); cout << "[Italiah] ";
+			i++;
+			move.Gotoxy(2, i); cout << "[Spanish] ";
+			i++;
+			move.Gotoxy(2, i); cout << "[French] ";
+			i++;
+			move.Gotoxy(2, i); cout << "[Germah]";
+			i++;
+			move.Gotoxy(); cout << "->";
 
-			if (user_move == "enter")
+			string go_to = move.CatchMove();
+			system("cls");
+
+			if (go_to == "enter")
 			{
 				ext = true;
-				switch (move.Y)
+				switch (i)
 				{
-				case 2: // English
+				case 1: // English
 					language = English; break;
-				case 3:  // Ukrainian
+				case 2:  // Ukrainian
 					language = Ukrainian; break;
-				case 4:  // Italian
+				case 3:  // Italian
 					language = Italian; break;
-				case 5:  // Spanish
+				case 4:  // Spanish
 					language = Spanish; break;
-				case 6:  // French
+				case 5:  // French
 					language = French; break;
-				case 7:  // German
+				case 6:  // German
 					language = German; break;
 				}
 			}
-			else if (user_move == "up")
+			else if (go_to == "down")
 			{
-				move.Y == 2 ? move.Y = 7 : move.Y++;
+				move.Y == i - 1 ? move.Y = min : move.Y++;
 			}
-			else if (user_move == "down")
+			else if (go_to == "up")
 			{
-				move.Y == 7 ? move.Y = 2 : move.Y--;
+				move.Y == min ? move.Y = i - 1 : move.Y--;
 			}
 		}
 	}

@@ -24,7 +24,6 @@ class WorkWithPeople
 		bool ext = false;
 		while (!ext)
 		{
-			result.clear();
 			system("cls");
 			i = 0;
 
@@ -49,6 +48,7 @@ class WorkWithPeople
 				{
 					if (move.Y == 1)
 					{
+						result.clear();
 						cout << "Find by purchase quantity" << endl;
 
 						cout << "Min range: "; move.SecureEnter(r1);
@@ -64,6 +64,7 @@ class WorkWithPeople
 					}
 					else if (move.Y == 2)
 					{
+						result.clear();
 						cout << "Find by age" << endl;
 
 						cout << "Min range: "; move.SecureEnter(r1);
@@ -79,6 +80,7 @@ class WorkWithPeople
 					}
 					else if (move.Y == 3)
 					{
+						result.clear();
 						cout << "Find by id" << endl;
 
 						cout << "Min range: "; move.SecureEnter(r1);
@@ -95,6 +97,14 @@ class WorkWithPeople
 					else
 					{
 						ext = true;
+					}
+
+					if (ext == false)
+					{
+						for (int i = 0; i < result.size(); i++)
+						{
+							v_users[result[i]].Print();
+						}
 					}
 				}
 				catch (const IncorrectValue& except)
@@ -118,7 +128,7 @@ class WorkWithPeople
 		}
 		return result;
 	}
-	int FindUserBy(vector<User>& v_users)
+	vector<int> FindUserBy(vector<User>& v_users)
 	{
 		if (v_users.empty())
 		{
@@ -140,7 +150,6 @@ class WorkWithPeople
 		bool ext = false;
 		while (!ext)
 		{
-			result.clear();
 			system("cls");
 			i = 0;
 
@@ -181,8 +190,8 @@ class WorkWithPeople
 				{
 					if (move.Y == 1)
 					{
-						cout << "Find by Favorite author" << endl;
-						getline(cin, temp);
+						result.clear();
+						cout << "Find by Favorite author: "; getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -194,8 +203,8 @@ class WorkWithPeople
 					}
 					else if (move.Y == 2)
 					{
-						cout << "Find by Favorite language" << endl;
-						getline(cin, temp);
+						result.clear();
+						cout << "Find by Favorite language: "; getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -207,8 +216,8 @@ class WorkWithPeople
 					}
 					else if (move.Y == 3)
 					{
-						cout << "Find by Favorite genre" << endl;
-						getline(cin, temp);
+						result.clear();
+						cout << "Find by Favorite genre: "; getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -220,8 +229,8 @@ class WorkWithPeople
 					}
 					else if (move.Y == 4)
 					{
-						cout << "Find by Name" << endl;
-						getline(cin, temp);
+						result.clear();
+						cout << "Find by Name: "; getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -233,8 +242,8 @@ class WorkWithPeople
 					}
 					else if (move.Y == 5)
 					{
-						cout << "Find by Surname" << endl;
-						getline(cin, temp);
+						result.clear();
+						cout << "Find by Surname: "; getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -246,8 +255,8 @@ class WorkWithPeople
 					}
 					else if (move.Y == 6)
 					{
-						cout << "Find by Phone number" << endl;
-						getline(cin, temp);
+						result.clear();
+						cout << "Find by Phone number: "; getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -259,8 +268,8 @@ class WorkWithPeople
 					}
 					else if (move.Y == 7)
 					{
-						cout << "Find by Nickname" << endl;
-						getline(cin, temp);
+						result.clear();
+						cout << "Find by Nickname: "; getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -272,8 +281,8 @@ class WorkWithPeople
 					}
 					else if (move.Y == 8)
 					{
-						cout << "Find by Id" << endl;
-						move.SecureEnter(int_temp);
+						result.clear();
+						cout << "Find by Id: ";	move.SecureEnter(int_temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -285,8 +294,8 @@ class WorkWithPeople
 					}
 					else if (move.Y == 9)
 					{
-						cout << "Find by Age" << endl;
-						move.SecureEnter(int_temp);
+						result.clear();
+						cout << "Find by Age: "; move.SecureEnter(int_temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -298,8 +307,8 @@ class WorkWithPeople
 					}
 					else if (move.Y == 10)
 					{
-						cout << "Find by Purchase quantity" << endl;
-						move.SecureEnter(int_temp);
+						result.clear();
+						cout << "Find by Purchase quantity: "; move.SecureEnter(int_temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -311,8 +320,8 @@ class WorkWithPeople
 					}
 					else if (move.Y == 11)
 					{
-						cout << "Find by Account status" << endl;
-						getline(cin, temp);
+						result.clear();
+						cout << "Find by Account status: "; getline(cin, temp);
 
 						for (int i = 0; i < v_users.size(); i++)
 						{
@@ -324,7 +333,12 @@ class WorkWithPeople
 					}
 					else
 					{
-						return true;
+						return result;
+					}
+
+					for (int i = 0; i < result.size(); i++)
+					{
+						v_users[result[i]].Print();
 					}
 				}
 				catch (const IncorrectValue& except)
@@ -381,7 +395,7 @@ class Menu
 		}
 
 		bool ext = false;
-		int i = 0, min = 2;
+		int i = 0, min = 1;
 		Move move;
 		move(0, 0);
 
@@ -390,8 +404,7 @@ class Menu
 			system("cls");
 			i = 0;
 
-			move.Gotoxy(0, 0); cout << "-*-*-*-*-*-*-*-*-+| Choose what do you want to do nex |+-*-*-*-*-*-*-*-*-";
-			i++;
+			move.Gotoxy(0, i); cout << "-*-*-*-*-*-*-*-*-+| Choose what do you want to do next |+-*-*-*-*-*-*-*-*-";
 			i++;
 			move.Gotoxy(2, i); cout << "Change book information";
 			i++;
@@ -444,9 +457,9 @@ class Menu
 		}
 
 		bool ext = false;
-		int i = 0, min = 2;
+		int i = 0, min = 1;
 		Move move;
-		move(0, 2);
+		move(0, 1);
 
 		while (!ext)
 		{
@@ -454,7 +467,6 @@ class Menu
 			i = 0;
 
 			move.Gotoxy(0, 0); cout << "-*-*-*-*-*-*-*-*-+| Choose what do you want to do next |+-*-*-*-*-*-*-*-*-";
-			i++;
 			i++;
 			move.Gotoxy(2, i); cout << "Make a discount (before removing the discount manually)";
 			i++;
@@ -489,7 +501,6 @@ class Menu
 					}
 					else if (move.Y == min + 1) // Change users status
 					{
-
 						if (me.admin->isValidPassword())
 						{
 							for (int i = 0; i < results.size(); i++)
@@ -550,7 +561,7 @@ class Menu
 			system("cls");
 			i = 0;
 
-			move.Gotoxy(0, i); cout << "-*-*-*-*-*-*-*| Add a discount on books in the range by|*-*-*-*-*-*-*-";
+			move.Gotoxy(0, i); cout << "-*-*-*-*-*-*-*| Add a discount by|*-*-*-*-*-*-*-";
 			i++;
 			move.Gotoxy(2, i); cout << "Age rating";
 			i++;
@@ -582,14 +593,16 @@ class Menu
 						cout << "|-|-| A discount will be added to all books below |-|-|" << endl << endl;
 						vector<int> result_iter = library.FindBookBy_ageRating(r1, r2, true);
 
+						if (result_iter.size() == 0)
+						{
+							break;
+						}
+
 						cout << "To add a discount, press [ENTER]" << endl;
 
 						int key = _getch();
 						if (key == 13) // Enter
 						{
-							float discount;
-							cout << "Enter a discount: "; move.SecureEnter(discount);
-
 							for (int i = 0; i < result_iter.size(); i++)
 							{
 								me.admin->AddSaleToBook(library[result_iter[i]]);
@@ -621,7 +634,7 @@ class Menu
 							}
 						}
 					}
-					else if (move.Y == 2) // Number of copies
+					else if (move.Y == 3) // Number of copies
 					{
 						cout << "Find by number of copies" << endl;
 
@@ -646,7 +659,7 @@ class Menu
 							}
 						}
 					}
-					else if (move.Y == 3) // Price
+					else if (move.Y == 4) // Price
 					{
 						cout << "Find by price" << endl;
 
@@ -744,9 +757,7 @@ class Menu
 			system("cls");
 			i = 0;
 
-			move.Gotoxy(0, 0); cout << "-*-*-*-*-*-*-*| Admin menu |*-*-*-*-*-*-*-";
-			i++;
-			move.Gotoxy(x, i); cout << "Register a new administrator account";
+			move.Gotoxy(0, i); cout << "-*-*-*-*-*-*-*| Admin menu |*-*-*-*-*-*-*-";
 			i++;
 			move.Gotoxy(x, i); cout << "Add a book to the library";
 			i++;
@@ -773,45 +784,37 @@ class Menu
 			{
 				try
 				{
-					if (move.Y == min) // Register a new administrator account
-					{
-						Admin admin;
-						admin.Register(users, admins);
-					}
-					else if (move.Y == min + 1) // Add a book to the library
+					if (move.Y == min) // Add a book to the library
 					{
 						library.AddNewBook();
 					}
-					else if (move.Y == min + 2) // Add a discount to the books
+					else if (move.Y == min + 1) // Add a discount to the books
 					{
-						if (InRange())
-						{
-							AddDiscount_inRange();
-						}
+						AddDiscount_inRange();
 					}
-					else if (move.Y == min + 3) // Find book
+					else if (move.Y == min + 2) // Find book
 					{
 						FindBook();
 					}
-					else if (move.Y == min + 4) // Find user
+					else if (move.Y == min + 3) // Find user
 					{
 						FindUser();
 					}
-					else if (move.Y == min + 5) // Print all books
+					else if (move.Y == min + 4) // Print all books
 					{
 						for (int i = 0; i < library.GetBooksSize(); i++)
 						{
 							library[i].PrintShortInfo();
 						}
 					}
-					else if (move.Y == min + 6) // Print all users
+					else if (move.Y == min + 5) // Print all users
 					{
 						for (int i = 0; i < users.size(); i++)
 						{
 							users[i].PrintShortInfo();
 						}
 					}
-					else if (move.Y == min + 7) // Show all my info
+					else if (move.Y == min + 6) // Show all my info
 					{
 						me.admin->PrintFull();
 					}
@@ -833,11 +836,11 @@ class Menu
 			}
 			else if (go_to == "down")
 			{
-				move.Y == i - 1? move.Y = min - 1 : move.Y++;
+				move.Y == i - 1 ? move.Y = min : move.Y++;
 			}
 			else if (go_to == "up")
 			{
-				move.Y == min - 1 ? move.Y = i - 1: move.Y--;
+				move.Y == min ? move.Y = i - 1 : move.Y--;
 			}
 		}
 		return "go";
@@ -865,15 +868,43 @@ class Menu
 			}
 			else
 			{
-				int result_of_find = wwp.FindUserBy(users);
+				vector<int> result_of_find;
+				result_of_find = wwp.FindUserBy(users);
 
 				if (Continue())
 				{
-					me.admin->ChangeUserInfo(users[result_of_find]);
+					cout << "SIZE: " << result_of_find.size() << endl;
+					if (result_of_find.size() > 1)
+					{
+						cout << "Enter id to work with: "; 
+						
+						int id = 0; Move move;
+						move.SecureEnter(id);
+
+						for (int i = 0; i < users.size(); i++)
+						{
+							if (id == users[i].GetID())
+							{
+								me.admin->ChangeUserInfo(users[i]);
+							}
+						}
+					}
+					else if (result_of_find.size() == 1)
+					{
+						me.admin->ChangeUserInfo(users[result_of_find[0]]);
+					}
+					else
+					{
+						cout << "List is empty!" << endl;
+					}
 				}
 			}
 		}
 		catch (const PermissionDenied& except)
+		{
+			cout << except << endl;
+		}
+		catch(const IncorrectValue & except)
 		{
 			cout << except << endl;
 		}
@@ -1025,8 +1056,7 @@ class Menu
 				{
 					if (move.Y == min) // My orders
 					{
-						Menu_Admin();
-						/*if (me.user->GetOrdersSize() != 0)
+						if (me.user->GetOrdersSize() != 0)
 						{
 							for (int i = 0; i < me.user->GetOrdersSize(); i++)
 							{
@@ -1036,7 +1066,7 @@ class Menu
 						else
 						{
 							cout << "Orders list is empty!" << endl;
-						}*/
+						}
 					}
 					else if (move.Y == min + 1) // Wisheslist
 					{
@@ -1347,7 +1377,6 @@ class Menu
 
 			move.Gotoxy(3, i); cout << "-*-*-*-*-*-*-*| Find book by |**-*-*-*-*-*-"; i++;
 			move.Gotoxy(3, i); cout << "Number of books"; i++;
-			move.Gotoxy(3, i); cout << "Type"; i++;
 			move.Gotoxy(3, i); cout << "Title"; i++;
 			move.Gotoxy(3, i); cout << "Author"; i++;
 			move.Gotoxy(3, i); cout << "Age rating"; i++;
@@ -1366,60 +1395,57 @@ class Menu
 			{
 				try
 				{
-					if (move.Y == 1)
+					if (move.Y == 1) // Number of books
 					{
 						cout << "Enter number of books: ";
 						move.SecureEnter(int_temp);
 						library.FindBookBy_NumberOfBooks(int_temp);
 					}
-					else if (move.Y == 2)
+					else if (move.Y == 2) // Title
 					{
-						cout << "Enter type to search: "; getline(cin, temp);
-						library.FindBookBy_type(temp);
-					}
-					else if (move.Y == 3)
-					{
-						cout << "Enter title to search: "; getline(cin, temp);
+						cout << "Enter title to search: "; 
+						cin.ignore(); getline(cin, temp);
 						library.FindBookBy_title(temp);
 					}
-					else if (move.Y == 4)
+					else if (move.Y == 3) // Author
 					{
 						cout << "Enter author to search: "; getline(cin, temp);
 						library.FindBookBy_author(temp);
 					}
-					else if (move.Y == 5)
+					else if (move.Y == 4) // Age rating
 					{
 						cout << "Enter age rating: ";
 						move.SecureEnter(int_temp);
 						library.FindBookBy_ageRating(int_temp);
 					}
-					else if (move.Y == 6)
+					else if (move.Y == 5) // Year
 					{
 						cout << "Enter book year: ";
 						move.SecureEnter(int_temp);
 						library.FindBookBy_year(int_temp);
 					}
-					else if (move.Y == 7)
+					else if (move.Y == 6) // Price
 					{
-						cout << "Enter number of books: ";
+						cout << "Enter price of books: ";
 
 						float price;
 						move.SecureEnter(price);
 
-						library.FindBookBy_price(int_temp);
+						library.FindBookBy_price(price);
 					}
-					else if (move.Y == 8)
+					else if (move.Y == 7) // ID
 					{
 						cout << "Enter book id: ";
 						move.SecureEnter(int_temp);
 						library.FindBookBy_id(int_temp);
 					}
-					else if (move.Y == 9)
+					else if (move.Y == 8) // Genre
 					{
-						cout << "Enter genre to search: "; getline(cin, temp);
+						cout << "Enter genre to search: "; 
+						cin.ignore(); getline(cin, temp);
 						library.FindBookBy_Genre(temp);
 					}
-					else if (move.Y == 10)
+					else if (move.Y == 9) // Language
 					{
 						cout << "Enter language to search: "; getline(cin, temp);
 						library.FindBookBy_language(temp);

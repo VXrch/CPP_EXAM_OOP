@@ -210,30 +210,6 @@ vector<int> Library::FindBookBy_NumberOfBooks(int min_number, int max_number, bo
 	}
 }
 
-void Library::FindBookBy_type(string type) const
-{
-	try
-	{
-		bool found = false;
-		for (int i = 0; i < books.size(); i++)
-		{
-			if (books[i].book.GetType() == type)
-			{
-				books[i].book.PrintShortInfo();
-				found = true;
-			}
-		}
-		if (found == false)
-		{
-			cout << "There are no books that would satisfy the request" << endl;
-		}
-	}
-	catch (...)
-	{
-		cout << "An unspecified error has occurred" << endl;
-	}
-}
-
 void Library::FindBookBy_title(string title) const
 {
 	try
@@ -837,7 +813,6 @@ void Library::FindBookBy_id(unsigned int id) const
 		if (found == false)
 		{
 			cout << "There are no books that would satisfy the request" << endl;
-			throw IdDoesNotExist();
 		}
 	}
 	catch (const exception&)

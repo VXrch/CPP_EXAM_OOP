@@ -97,8 +97,6 @@ public:
 	vector<int> FindBookBy_NumberOfBooks(int number, bool return_value) const;
 	vector<int> FindBookBy_NumberOfBooks(int min_number, int max_number, bool return_value) const;
 
-	void FindBookBy_type(string type) const;
-
 	void FindBookBy_title(string title) const;
 	void FindBookBy_title(vector<string> titles) const;
 

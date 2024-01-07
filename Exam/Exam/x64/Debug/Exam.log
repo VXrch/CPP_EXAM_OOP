@@ -1,2 +1,24 @@
-﻿  Move.h
-  Exam.vcxproj -> C:\Users\dev\Desktop\C++_Exam\Exam\x64\Debug\Exam.exe
+﻿  FilesWork.cpp
+D:\ForAll\C++\Exam\Exam\Book.h(349,21): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "FilesWork.cpp")
+  
+D:\ForAll\C++\Exam\Exam\People.h(186,23): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "FilesWork.cpp")
+  
+D:\ForAll\C++\Exam\Exam\People.h(190,21): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "FilesWork.cpp")
+  
+D:\ForAll\C++\Exam\Exam\People.h(194,19): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "FilesWork.cpp")
+  
+D:\ForAll\C++\Exam\Exam\Library.h(35,20): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "FilesWork.cpp")
+  
+D:\ForAll\C++\Exam\Exam\FilesWork.cpp(269,23): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\ForAll\C++\Exam\Exam\FilesWork.cpp(291,28): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\ForAll\C++\Exam\Exam\FilesWork.cpp(303,27): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\ForAll\C++\Exam\Exam\FilesWork.cpp(337,22): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\ForAll\C++\Exam\Exam\FilesWork.cpp(349,21): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\ForAll\C++\Exam\Exam\FilesWork.cpp(381,22): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\ForAll\C++\Exam\Exam\FilesWork.cpp(393,21): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+  Exam.vcxproj -> D:\ForAll\C++\Exam\x64\Debug\Exam.exe

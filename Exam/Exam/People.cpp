@@ -285,7 +285,7 @@ void User::PlaceOrder(Book Tbook)
 			}
 		}
 		
-		cout << "Enter the address for delivery: "; getline(cin, order.address);
+		cout << "Enter the address for delivery: "; cin.ignore(); getline(cin, order.address);
 		cout << "Total coast will be: " << (order.GetCoast() - discount);
 
 		string password;
@@ -296,10 +296,6 @@ void User::PlaceOrder(Book Tbook)
 			cout << "Enter your account password to confirm your order!"; system("pause");
 			password = m.PasswordAnimation();
 
-			if (password == "0")
-			{
-				ext = true;
-			}
 			if (password == this->password)
 			{
 				order.SetStatus(1);
@@ -308,7 +304,12 @@ void User::PlaceOrder(Book Tbook)
 				orders.push_back(order);
 				preferences.NewBook(Tbook);
 
-				cout << "The order was successfully placed! You can see the order status in the \"My Orders\" menu!" << endl;
+				cout << "\nThe order was successfully placed! You can see the order status in the \"My Orders\" menu!" << endl;
+				ext = true;
+			}
+			else if (password == "0")
+			{
+				ext = true;
 			}
 			else
 			{
@@ -570,6 +571,7 @@ void Admin::ChangeBookInfo(Book& book)
 	bool ext = false;
 	while (ext == false)
 	{
+		i = 0;
 		system("cls");
 
 		move.Gotoxy(move.X, move.Y);
@@ -581,7 +583,6 @@ void Admin::ChangeBookInfo(Book& book)
 		move.Gotoxy(x, i);  cout << "Year"; i++;
 		move.Gotoxy(x, i);  cout << "Price"; i++;
 		move.Gotoxy(x, i);  cout << "Language"; i++;
-		move.Gotoxy(x, i);  cout << "Genres"; i++;
 		move.Gotoxy(x, i);  cout << "Go back"; i++;
 
 		string go_to = move.CatchMove();
@@ -618,20 +619,17 @@ void Admin::ChangeBookInfo(Book& book)
 			case 7:  // Language
 				book.ChangeLanguage();
 				break;
-			case 8:  // Genres
-				book.ChangeLanguage();
-				break;
 			default: ext = true; break;
 			}
 			system("cls");
 		}
 		else if (go_to == "down")
 		{
-			move.Y == i ? move.Y = min : move.Y++;
+			move.Y == i - 1 ? move.Y = min : move.Y++;
 		}
 		else if (go_to == "up")
 		{
-			move.Y == min ? move.Y = i : move.Y--;
+			move.Y == min ? move.Y = i - 1 : move.Y--;
 		}
 	}
 }
@@ -641,8 +639,10 @@ void Admin::AddSaleToBook(Book& book)
 	try
 	{
 		float sale;
-		cout << "Enter sale in percentage (for example: [20.6]): "; cin >> sale;
+		cout << "Enter sale (for example: [20]$): "; cin >> sale;
 		book.SetSale(sale);
+
+		system("pause");
 	}
 	catch (...)
 	{

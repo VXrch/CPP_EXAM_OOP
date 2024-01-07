@@ -335,22 +335,26 @@ public:
 				{
 					if (move.Y == 1)
 					{
-						cout << "Enter new name: "; getline(cin, temp);
+						cout << "Enter new name: ";
+						cin.ignore(); getline(cin, temp);
 						user.SetName(temp);
 					}
 					else if (move.Y == 2)
 					{
-						cout << "Enter new surname: "; getline(cin, temp);
+						cout << "Enter new surname: ";
+						cin.ignore(); getline(cin, temp);
 						user.SetSurname(temp);
 					}
 					else if (move.Y == 3)
 					{
-						cout << "Enter new phone number: "; getline(cin, temp);
+						cout << "Enter new phone number: ";
+						cin.ignore(); getline(cin, temp);
 						user.SetPhone(temp);
 					}
 					else if (move.Y == 4)
 					{
-						cout << "Enter new nickname: "; getline(cin, temp);
+						cout << "Enter new nickname: ";
+						cin.ignore(); getline(cin, temp);
 						user.SetNickname(temp);
 					}
 					else if (move.Y == 5)
@@ -360,7 +364,8 @@ public:
 					}
 					else if (move.Y == 6)
 					{
-						cout << "Enter new status: "; getline(cin, temp);
+						cout << "Enter new status: ";
+						cin.ignore(); getline(cin, temp);
 						user.SetStatus(temp);
 					}
 					else
@@ -380,11 +385,11 @@ public:
 			}
 			else if (go_to == "down")
 			{
-				move.Y == i ? move.Y = min : move.Y++;
+				move.Y == i - 1 ? move.Y = min : move.Y++;
 			}
 			else if (go_to == "up")
 			{
-				move.Y == min ? move.Y = i : move.Y--;
+				move.Y == min ? move.Y = i - 1 : move.Y--;
 			}
 		}
 	}
@@ -413,14 +418,14 @@ public:
 		int i = 0, min = 1;
 
 		Move move;
-		move(0, 0);
+		move(0, 1);
 
 		while (!ext)
 		{
 			system("cls");
 			i = 0;
 
-			move.Gotoxy(2, i); cout << "-*-*-*-*-*-*-*-*-+| Choose status to set |+-*-*-*-*-*-*-*-*-";
+			move.Gotoxy(0, i); cout << "-*-*-*-*-*-*-*-*-+| Choose status to set |+-*-*-*-*-*-*-*-*-";
 			i++;
 			move.Gotoxy(2, i); cout << "Active";
 			i++;
@@ -439,11 +444,27 @@ public:
 				{
 					if (move.Y == 1)
 					{
-						user.account_status = Active;
+						if (user.account_status == Active)
+						{
+							cout << "The account already has an \"Active\" status" << endl;
+						}
+						else
+						{
+							user.account_status = Active;
+							cout << "Successed!" << endl;
+						}
 					}
 					else if (move.Y == 2)
 					{
-						user.account_status = Blocked;
+						if (user.account_status == Blocked)
+						{
+							cout << "The account already has a \"Blocked\" status" << endl;
+						}
+						else
+						{
+							user.account_status = Blocked;
+							cout << "Successed!" << endl;
+						}
 					}
 					else // Come back
 					{

@@ -46,13 +46,10 @@ void Book::Print() const
 	cout << "discription: " << discription << endl;
 	cout << "year: " << year << endl;
 	cout << "price: " << price << endl;
-	cout << "language: " << language << endl;
+	cout << "language: " << GetLanguage() << endl;
 
 	cout << "Genres: " << endl;
-	if (genres.empty())
-	{
-		cout << "None" << endl;
-	}
+	if (genres.empty()) { cout << "None" << endl; }
 	else
 	{
 		string genre;
@@ -65,7 +62,7 @@ void Book::Print() const
 }
 void Book::PrintMinInfo() const
 {
-	cout << "ID: " << id << "Title: " << title << " | Author: " << author << " | Language: " << language << endl;
+	cout << "ID: " << id << "Title: " << title << " | Author: " << author << " | Language: " << GetLanguage() << endl;
 }
 void Book::PrintAllGenres() const
 {
@@ -89,19 +86,10 @@ void Book::PrintAllGenres() const
 }
 void Book::PrintShortInfo() const
 {
-	cout << "ID: " << endl;
+	cout << "ID: " << id << endl;
 	cout << "Title: " << title << endl;
 	cout << "author: " << author << endl;
-	cout << "language: " << language << endl;
-}
-void Book::PrintAllLanguages() const
-{
-	cout << "[English]";
-	cout << " [Ukrainian]";
-	cout << " [Italian]";
-	cout << " [Spanish]";
-	cout << " [French]";
-	cout << " [Germah]";
+	cout << "language: " << GetLanguage() << endl;
 }
 void Book::PrintAllGenres(int X = 1, int Y = 1) const
 {
@@ -125,17 +113,69 @@ void Book::PrintAllGenres(int X = 1, int Y = 1) const
 	move.Gotoxy(X, Y); cout << "[True Crime] "; Y++;
 	move.Gotoxy(X, Y); cout << "[Humor]";
 }
-void Book::PrintAllLanguages(int X = 1, int Y = 1) const
+void Book::PrintAndSetLanguage(string title_to_set)
 {
+	string language;
 
-	Move move(X, Y);
+	Move move(0, 1);
+	bool ext = false;
 
-	move.Gotoxy(X, Y); cout << "[English] "; Y++;
-	move.Gotoxy(X, Y); cout << "[Ukrainiah] "; Y++;
-	move.Gotoxy(X, Y); cout << "[Italiah] "; Y++;
-	move.Gotoxy(X, Y); cout << "[Spanish] "; Y++;
-	move.Gotoxy(X, Y); cout << "[French] "; Y++;
-	move.Gotoxy(X, Y); cout << "[Germah]"; Y++;
+	int i = 0, min = 1;
+
+	while (!ext)
+	{
+		system("cls");
+		i = 0;		
+
+		move.Gotoxy(0, i); cout << "-*-*-*-*-*-*-*-*-+| " << title_to_set << " |+-*-*-*-*-*-*-*-*-";
+		i++;
+		move.Gotoxy(2, i); cout << "[English]";
+		i++;
+		move.Gotoxy(2, i); cout << "[Ukrainiah]";
+		i++;
+		move.Gotoxy(2, i); cout << "[Italiah]";
+		i++;
+		move.Gotoxy(2, i); cout << "[Spanish]";
+		i++;
+		move.Gotoxy(2, i); cout << "[French]";
+		i++;
+		move.Gotoxy(2, i); cout << "[Germah]";
+		i++;
+		move.Gotoxy(); cout << "->";
+
+		string go_to = move.CatchMove();
+		system("cls");
+
+		if (go_to == "enter")
+		{
+			ext = true;
+			switch (i)
+			{
+			case 1: // English
+				language = "English";
+			case 2:  // Ukrainian
+				language = "Ukrainian";
+			case 3:  // Italian
+				language = "Italian";
+			case 4:  // Spanish 
+				language = "Spanish";
+			case 5:  // French
+				language = "French";
+			case 6:  // German
+				language = "German";
+			}
+
+			MakeLanguage(language);
+		}
+		else if (go_to == "down")
+		{
+			move.Y == i - 1 ? move.Y = min : move.Y++;
+		}
+		else if (go_to == "up")
+		{
+			move.Y == min ? move.Y = i - 1 : move.Y--;
+		}
+	}
 }
 
 bool Book::Fill()
@@ -151,7 +191,8 @@ bool Book::Fill()
 		while (!ext)
 		{
 			system("cls");
-			cout << "Age rating:   \n  +\r";
+			cout << "Age rating:   +\r";
+			cout << "Age rating: ";
 
 			if (!(cin >> ageRating))
 			{
@@ -202,7 +243,7 @@ bool Book::Fill()
 		}
 		ext = false;
 
-		cout << "Book description: "; getline(cin, discription);
+		cout << "Book description: "; getline(cin, this->discription);
 
 		while (!ext)
 		{
@@ -234,46 +275,9 @@ bool Book::Fill()
 		system("cls");
 		Move move(2, 1);
 
-		while (!ext)
-		{
-			move.Gotoxy(2, 0); cout << "Coose book language: ";
+		PrintAndSetLanguage("Coose book language");
 
-			PrintAllLanguages(2, 1);
-			move.Gotoxy(0, move.Y); cout << ">";
-
-			string user_move = move.CatchMove();
-			system("cls");
-
-			if (user_move == "enter")
-			{
-				ext = true;
-				switch (move.Y)
-				{
-				case 1: // English
-					language = English; break;
-				case 2:  // Ukrainian
-					language = Ukrainian; break;
-				case 3:  // Italian
-					language = Italian; break;
-				case 4:  // Spanish
-					language = Spanish; break;
-				case 5:  // French
-					language = French; break;
-				case 6:  // German
-					language = German; break;
-				}
-			}
-			else if (user_move == "down")
-			{
-				move.Y == 6 ? move.Y = 1 : move.Y++;
-			}
-			else if (user_move == "up")
-			{
-				move.Y == 1 ? move.Y = 6 : move.Y--;
-			}
-		}
-		ext = false;
-
+		int max = 17;
 		vector<int> genres_of_this_book;
 		while (!ext)
 		{
@@ -370,11 +374,11 @@ bool Book::Fill()
 			}
 			else if (user_move == "down")
 			{
-				move.Y == 18 ? move.Y = 1 : move.Y++;
+				move.Y == max ? move.Y = 1 : move.Y++;
 			}
 			else if (user_move == "up")
 			{
-				move.Y == 1 ? move.Y = 18 : move.Y--;
+				move.Y == 1 ? move.Y = max : move.Y--;
 			}
 			system("cls");
 		}
@@ -384,8 +388,6 @@ bool Book::Fill()
 			genres_of_this_book[i] -= 2;
 		}
 		genres = MakeGenres(genres_of_this_book);
-
-		type.SetType(year, GetLanguage(), ageRating);
 
 		id = idCounter;
 		idCounter++;

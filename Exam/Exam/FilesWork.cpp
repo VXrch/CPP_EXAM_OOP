@@ -47,9 +47,6 @@ void FilesWork::ReadLibrary(Library& library)
 			book.sale = stof(temp);
 
 			getline(inputFile, temp);
-			book.MakeType(temp);
-
-			getline(inputFile, temp);
 			while (temp != "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-")
 			{
 				genres.push_back(temp);
@@ -90,7 +87,6 @@ void FilesWork::WriteLibrary(Library& library)
 			outputFile << library.books[i].book.id << endl;
 			outputFile << library.books[i].book.GetLanguage() << endl;
 			outputFile << library.books[i].book.sale << endl;
-			outputFile << library.books[i].book.GetType() << endl;
 
 			for (int j = 0; j < library.books[i].book.genres.size(); j++)
 			{
@@ -307,9 +303,6 @@ void FilesWork::ReadUsers(vector<User>& users)
 				order.book.sale = stoi(temp);
 
 				getline(inputFile, temp);
-				order.book.MakeType(temp);
-
-				getline(inputFile, temp);
 				while (temp != "|-|-|-|-|-|-|-|-|-|-|-|")
 				{
 					genres.push_back(temp);
@@ -356,9 +349,6 @@ void FilesWork::ReadUsers(vector<User>& users)
 				book.sale = stoi(temp);
 
 				getline(inputFile, temp);
-				book.MakeType(temp);
-
-				getline(inputFile, temp);
 				while (temp != "|-|-|-|-|-|-|-|-|-|-|-|")
 				{
 					genres.push_back(temp);
@@ -401,9 +391,6 @@ void FilesWork::ReadUsers(vector<User>& users)
 
 				getline(inputFile, temp);
 				book.sale = stoi(temp);
-
-				getline(inputFile, temp);
-				book.MakeType(temp);
 
 				getline(inputFile, temp);
 				while (temp != "|-|-|-|-|-|-|-|-|-|-|-|")
@@ -490,7 +477,6 @@ void FilesWork::WriteUsers(vector<User>& users)
 				outputFile << users[i].orders[j].book.id << endl;
 				outputFile << users[i].orders[j].book.GetLanguage() << endl;
 				outputFile << users[i].orders[j].book.sale << endl;
-				outputFile << users[i].orders[j].book.GetType() << endl;
 
 				for (int k = 0; k < users[i].orders.size(); k++)
 				{
@@ -513,7 +499,6 @@ void FilesWork::WriteUsers(vector<User>& users)
 				outputFile << users[i].wishlist[j].id << endl;
 				outputFile << users[i].wishlist[j].GetLanguage() << endl;
 				outputFile << users[i].wishlist[j].sale << endl;
-				outputFile << users[i].wishlist[j].GetType() << endl;
 
 				for (int k = 0; k < users[i].wishlist[j].genres.size(); k++)
 				{
@@ -536,7 +521,6 @@ void FilesWork::WriteUsers(vector<User>& users)
 				outputFile << users[i].cart[j].id << endl;
 				outputFile << users[i].cart[j].GetLanguage() << endl;
 				outputFile << users[i].cart[j].sale << endl;
-				outputFile << users[i].cart[j].GetType() << endl;
 
 				for (int k = 0; k < users[i].cart[j].genres.size(); k++)
 				{
